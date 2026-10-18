@@ -208,9 +208,6 @@
               <span>•</span>
               <span class="text-amber-300" id="heroTravelerBadge">PASAJERO: VIAJERO 1</span>
             </div>
-            <button onclick="toggleEditLinksPanel()" class="text-xs font-semibold px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 border border-white/15 text-cyan-200 cursor-pointer">
-              ⚙️ Configurar links de Clase Virtual
-            </button>
           </div>
 
           <h1 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight mb-2">
@@ -220,27 +217,7 @@
             Elige tu ruta de vuelo para hoy: ingresa directamente a tu <strong>clase virtual</strong> o explora las 8 semanas de tu programa intensivo.
           </p>
 
-          <!-- Panel de configuración de enlaces -->
-          <div id="editLinksPanel" class="hidden mb-6 p-4 rounded-2xl bg-slate-900/95 border border-cyan-500/40 space-y-3">
-            <div class="text-xs font-bold text-cyan-300 uppercase">Configurar enlaces oficiales de Clase Virtual</div>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-              <div>
-                <label class="block text-xs text-slate-300 mb-1">🇺🇸 Link Clase Virtual — Inglés:</label>
-                <input id="inputMeetEn" type="url" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono" />
-              </div>
-              <div>
-                <label class="block text-xs text-slate-300 mb-1">🇧🇷 Link Clase Virtual — Portugués:</label>
-                <input id="inputMeetPt" type="url" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono" />
-              </div>
-            </div>
-            <div class="flex justify-end gap-2">
-              <button onclick="saveCustomLinks()" class="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold cursor-pointer">
-                ✓ Guardar Enlaces
-              </button>
-            </div>
-          </div>
-
-          <!-- LAS DOS OPCIONES DEL HERO: 1) INGLÉS y 2) PORTUGUÉS CON GOOGLE MEET -->
+          <!-- LAS DOS OPCIONES DEL HERO: 1) INGLÉS y 2) PORTUGUÉS -->
           <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
             <!-- OPCIÓN 1: CONVERSATIONAL ENGLISH BOOTCAMP -->
             <div class="rounded-2xl bg-gradient-to-br from-blue-950/90 via-slate-900/95 to-indigo-950/90 border-2 border-cyan-400/50 hover:border-cyan-400 p-6 flex flex-col justify-between shadow-lg transition">
@@ -1022,9 +999,7 @@
         }
         localStorage.setItem('polyglotmap_session_v6', JSON.stringify({
           isLoggedIn: appState.isLoggedIn,
-          currentUser: appState.currentUser,
-          meetUrlEn: appState.meetUrlEn,
-          meetUrlPt: appState.meetUrlPt
+          currentUser: appState.currentUser
         }));
       } catch (e) {}
     }
@@ -1036,8 +1011,6 @@
           const parsed = JSON.parse(raw);
           if (parsed.currentUser) appState.currentUser = parsed.currentUser;
           if (typeof parsed.isLoggedIn === 'boolean') appState.isLoggedIn = parsed.isLoggedIn;
-          if (parsed.meetUrlEn) appState.meetUrlEn = parsed.meetUrlEn;
-          if (parsed.meetUrlPt) appState.meetUrlPt = parsed.meetUrlPt;
           if (appState.currentUser) loadUserProgress(appState.currentUser.id);
         }
       } catch (e) {}
@@ -1141,23 +1114,6 @@
       document.getElementById('displayMeetPtShort').textContent = shortPt;
       document.getElementById('classViewMeetEn').textContent = shortEn;
       document.getElementById('classViewMeetPt').textContent = shortPt;
-
-      document.getElementById('inputMeetEn').value = enUrl;
-      document.getElementById('inputMeetPt').value = ptUrl;
-    }
-
-    function toggleEditLinksPanel() {
-      document.getElementById('editLinksPanel').classList.toggle('hidden');
-    }
-
-    function saveCustomLinks() {
-      const enVal = document.getElementById('inputMeetEn').value.trim();
-      const ptVal = document.getElementById('inputMeetPt').value.trim();
-      if (enVal) appState.meetUrlEn = enVal;
-      if (ptVal) appState.meetUrlPt = ptVal;
-      saveUserProgress();
-      updateLinksUI();
-      document.getElementById('editLinksPanel').classList.add('hidden');
     }
 
     function copyMeetLink(lang) {
