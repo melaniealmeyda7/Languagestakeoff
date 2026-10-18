@@ -1,0 +1,1326 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>POLYGLOT MAP — Portal del Estudiante | Bootcamps Inglés & Portugués</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    :root {
+      --background: #0b1120;
+      --card: #111827;
+      --border: #1e293b;
+      --foreground: #f8fafc;
+      --muted-foreground: #94a3b8;
+    }
+    html.light {
+      --background: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --foreground: #0f172a;
+      --muted-foreground: #64748b;
+    }
+  </style>
+</head>
+<body class="bg-[var(--background)] text-[var(--foreground)] antialiased min-h-screen flex flex-col">
+
+  <!-- =====================================================================
+       1. PANTALLA DE LOGIN (LIMPIA, SIN TEXTO DE VIAJERO 1 A 20)
+       ===================================================================== -->
+  <div id="loginScreen" class="min-h-screen w-full flex items-center justify-center p-4 bg-gradient-to-br from-slate-950 via-blue-950 to-indigo-950 text-white">
+    <div class="max-w-4xl w-full grid grid-cols-1 lg:grid-cols-12 rounded-3xl overflow-hidden border border-white/15 shadow-2xl bg-slate-900/90 backdrop-blur-xl">
+
+      <!-- Left Column: Polyglot Map Branding & Info -->
+      <div class="lg:col-span-6 p-8 bg-gradient-to-br from-blue-600/30 via-indigo-600/20 to-cyan-500/20 border-b lg:border-b-0 lg:border-r border-white/10 flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-cyan-400 to-blue-600 flex items-center justify-center text-2xl shadow-lg">
+              🌍
+            </div>
+            <div>
+              <h1 class="font-black text-xl tracking-tight text-white">POLYGLOT MAP</h1>
+              <p class="text-xs font-bold uppercase tracking-widest text-cyan-300">Tu Viaje Lingüístico • Future-Ready EdTech</p>
+            </div>
+          </div>
+
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950 mb-4">
+            ✈️ BOOTCAMPS OFICIALES EN VIVO • 8 SEMANAS (32 HRS)
+          </span>
+
+          <h2 class="text-2xl sm:text-3xl font-black leading-tight text-white mb-3">
+            Portal del Estudiante: Inglés & Português do Zero
+          </h2>
+          <p class="text-sm text-slate-200 leading-relaxed mb-6">
+            Bienvenido a tu cabina de vuelo. Ingresa con tu usuario y contraseña asignados para acceder a tus salas de Google Meet en vivo, sílabo de 8 semanas, pasaporte digital y evaluaciones.
+          </p>
+
+          <!-- Tarjetas resumen de los 2 bootcamps -->
+          <div class="space-y-3">
+            <div class="p-3.5 rounded-2xl bg-white/10 border border-white/15 flex items-center gap-3">
+              <span class="text-2xl">🇺🇸</span>
+              <div class="text-xs">
+                <div class="font-bold text-white">Conversational English Bootcamp (Nivel A2)</div>
+                <div class="text-cyan-200">English Power Lab • Coach: Claudia García Conqui</div>
+              </div>
+            </div>
+            <div class="p-3.5 rounded-2xl bg-white/10 border border-white/15 flex items-center gap-3">
+              <span class="text-2xl">🇧🇷</span>
+              <div class="text-xs">
+                <div class="font-bold text-white">Bootcamp de Português do Zero (Iniciantes)</div>
+                <div class="text-emerald-200">Languages TAKEOFF • Coach: Jonathan Lima</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-white/10 text-xs text-slate-300 flex items-center justify-between">
+          <span>🌐 polyglotmap.com</span>
+          <span>Certificación Oficial Polyglot Map</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Login Form -->
+      <div class="lg:col-span-6 p-8 flex flex-col justify-center bg-slate-950/60">
+        <div class="mb-6">
+          <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">Check-In de Pasajero</span>
+          <h3 class="text-2xl font-bold text-white mt-1">Iniciar Sesión</h3>
+          <p class="text-xs text-slate-300 mt-1">
+            Ingresa tus credenciales de estudiante inscrito para acceder al portal:
+          </p>
+        </div>
+
+        <form onsubmit="handleLoginSubmit(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold text-slate-200 mb-1.5">Usuario</label>
+            <input
+              id="loginUser"
+              type="text"
+              required
+              class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-cyan-400"
+              placeholder="Ingresa tu usuario asignado"
+            />
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-200 mb-1.5">Contraseña</label>
+            <input
+              id="loginPass"
+              type="password"
+              required
+              class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-sm text-white focus:outline-none focus:border-cyan-400 font-mono"
+              placeholder="••••••••"
+            />
+          </div>
+
+          <div id="loginErrorMsg" class="hidden p-3 rounded-xl bg-red-500/20 border border-red-400/40 text-xs text-red-200">
+            Usuario o contraseña incorrectos. Verifica tus credenciales asignadas.
+          </div>
+
+          <button
+            type="submit"
+            class="w-full py-3 px-5 rounded-xl bg-gradient-to-r from-cyan-500 via-blue-600 to-indigo-600 hover:from-cyan-400 hover:to-indigo-500 text-white font-bold text-sm shadow-lg transition flex items-center justify-center gap-2 cursor-pointer"
+          >
+            <span>✈️ Abordar a Mi Viaje Lingüístico</span>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =====================================================================
+       2. APLICACIÓN PRINCIPAL (SIDEBAR POLYGLOT MAP + DASHBOARD CON HERO)
+       ===================================================================== -->
+  <div id="appContainer" class="hidden min-h-screen flex flex-col lg:flex-row">
+
+    <!-- SIDEBAR OFICIAL ESTILO PLATAFORMA.POLYGLOTMAP.COM -->
+    <aside class="w-full lg:w-64 bg-gradient-to-b from-slate-900 via-blue-900 to-indigo-900 text-white shrink-0 flex flex-col justify-between border-b lg:border-b-0 lg:border-r border-white/15">
+      <div>
+        <div class="p-4 border-b border-white/20 bg-gradient-to-r from-blue-600 via-cyan-600 to-blue-600">
+          <div class="flex items-center justify-between">
+            <div class="flex items-center gap-3">
+              <div class="text-3xl">🌍</div>
+              <div>
+                <h2 class="font-black text-base tracking-tight leading-none">POLYGLOT MAP</h2>
+                <p class="text-xs text-white/90 mt-0.5">Tu Viaje Lingüístico</p>
+              </div>
+            </div>
+            <button onclick="document.documentElement.classList.toggle('light')" class="px-2 py-1 rounded-lg bg-white/15 text-xs" title="Cambiar Tema">🌓</button>
+          </div>
+        </div>
+
+        <!-- Active Traveler Profile Box -->
+        <div class="p-4 border-b border-white/20 bg-white/10 backdrop-blur">
+          <div class="flex items-center gap-3">
+            <div id="sidebarAvatar" class="w-11 h-11 rounded-full border-2 border-cyan-400 bg-cyan-500 text-white font-black text-sm flex items-center justify-center shrink-0">
+              V1
+            </div>
+            <div class="min-w-0 flex-1">
+              <h3 id="sidebarUserName" class="font-bold text-sm text-white truncate">Viajero 1</h3>
+              <p id="sidebarUserCode" class="text-xs text-cyan-200 truncate font-mono">Usuario: viajero 1</p>
+              <div class="flex items-center gap-1.5 mt-1">
+                <span class="px-2 py-0.5 rounded-full text-xs font-bold bg-cyan-500 text-white">✈️ 8 Semanas (32h)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <nav class="p-3 space-y-1.5 flex lg:flex-col overflow-x-auto">
+          <button onclick="navigateView('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md whitespace-nowrap cursor-pointer">
+            <span>🏠</span> <span>Inicio & Salas Meet</span>
+          </button>
+          <button onclick="navigateView('modules')" id="nav-modules" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
+            <span>📚</span> <span>Mi Material (8 Semanas)</span>
+          </button>
+          <button onclick="navigateView('class')" id="nav-class" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
+            <span>📹</span> <span>Entrar a mis Clases</span>
+          </button>
+          <button onclick="navigateView('polyglot-map')" id="nav-polyglot-map" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
+            <span>🛂</span> <span>Pasaporte & Asistencia</span>
+          </button>
+          <button onclick="navigateView('progress')" id="nav-progress" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
+            <span>📊</span> <span>Mapa de Turbulencias</span>
+          </button>
+          <button onclick="navigateView('evaluations')" id="nav-evaluations" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
+            <span>🔒</span> <span>Evaluación (18 Dic)</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="p-4 border-t border-white/20 bg-slate-900/60">
+        <button onclick="handleLogout()" class="w-full py-2 px-3 rounded-xl border border-red-400/50 text-red-200 hover:bg-red-500/20 text-xs font-semibold flex items-center justify-center gap-2 transition cursor-pointer">
+          <span>🚪</span> <span>Cerrar Sesión</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6">
+
+      <!-- =====================================================================
+           VISTA 1: INICIO (HERO CON LAS 2 OPCIONES: INGLÉS Y PORTUGUÉS + MEET)
+           ===================================================================== -->
+      <section id="view-dashboard" class="space-y-6">
+        <div class="rounded-3xl bg-gradient-to-br from-slate-950 via-[#0b102b] to-indigo-950 text-white p-6 sm:p-8 border border-indigo-500/30 shadow-xl relative overflow-hidden">
+          <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
+            <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-violet-500/20 border border-violet-400/40 text-violet-200 text-xs font-bold uppercase tracking-wider">
+              <span>⚡ BOOTCAMPS OFICIALES POLYGLOT MAP</span>
+              <span>•</span>
+              <span class="text-amber-300" id="heroTravelerBadge">PASAJERO: VIAJERO 1</span>
+            </div>
+            <button onclick="toggleEditLinksPanel()" class="text-xs font-semibold px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 border border-white/15 text-cyan-200 cursor-pointer">
+              ⚙️ Configurar links de Google Meet
+            </button>
+          </div>
+
+          <h1 class="text-2xl sm:text-4xl font-black tracking-tight leading-tight mb-2">
+            ¡Bienvenido a bordo, <span id="heroWelcomeName" class="text-cyan-300">Viajero 1</span>! 🌍✈️
+          </h1>
+          <p class="text-sm sm:text-base text-slate-300 max-w-3xl mb-6">
+            Elige tu ruta de vuelo para hoy: ingresa directamente a tu sesión en vivo por <strong>Google Meet</strong> o explora las 8 semanas de tu programa intensivo.
+          </p>
+
+          <!-- Panel de configuración de enlaces -->
+          <div id="editLinksPanel" class="hidden mb-6 p-4 rounded-2xl bg-slate-900/95 border border-cyan-500/40 space-y-3">
+            <div class="text-xs font-bold text-cyan-300 uppercase">Configurar enlaces oficiales de Google Meet</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">🇺🇸 Link Google Meet — Inglés:</label>
+                <input id="inputMeetEn" type="url" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono" />
+              </div>
+              <div>
+                <label class="block text-xs text-slate-300 mb-1">🇧🇷 Link Google Meet — Portugués:</label>
+                <input id="inputMeetPt" type="url" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono" />
+              </div>
+            </div>
+            <div class="flex justify-end gap-2">
+              <button onclick="saveCustomLinks()" class="px-4 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold cursor-pointer">
+                ✓ Guardar Enlaces
+              </button>
+            </div>
+          </div>
+
+          <!-- LAS DOS OPCIONES DEL HERO: 1) INGLÉS y 2) PORTUGUÉS CON GOOGLE MEET -->
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- OPCIÓN 1: CONVERSATIONAL ENGLISH BOOTCAMP -->
+            <div class="rounded-2xl bg-gradient-to-br from-blue-950/90 via-slate-900/95 to-indigo-950/90 border-2 border-cyan-400/50 hover:border-cyan-400 p-6 flex flex-col justify-between shadow-lg transition">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-cyan-500/20 text-cyan-300 border border-cyan-400/30">
+                    🗣️ CONVERSATIONAL ENGLISH
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-400 text-slate-950">
+                    Nivel A2 Requerido
+                  </span>
+                </div>
+
+                <p class="text-xs font-bold uppercase tracking-wider text-cyan-300 mb-1">
+                  English Power Lab · Tu inglés, en modo power
+                </p>
+                <h2 class="text-xl sm:text-2xl font-black text-white mb-2">
+                  🇺🇸 Conversational English Bootcamp
+                </h2>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 mb-3">
+                  <div class="w-10 h-10 rounded-full bg-cyan-500 text-slate-950 font-black text-xs flex items-center justify-center shrink-0">
+                    CG
+                  </div>
+                  <div class="text-xs">
+                    <div class="font-bold text-white flex items-center gap-1.5">
+                      <span>Claudia García Conqui</span>
+                      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    </div>
+                    <div class="text-slate-300">Docente de Inglés | Traductora e Intérprete</div>
+                  </div>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                  Programa virtual de <strong>8 semanas (32 horas, 2 sesiones por semana)</strong> para hablar inglés americano con fluidez: presentaciones, rutina, planes, viajes, restaurantes, compras e inglés para entrevistas de trabajo.
+                </p>
+              </div>
+
+              <div class="space-y-2.5 pt-3 border-t border-white/10">
+                <div class="flex items-center justify-between text-xs text-slate-300">
+                  <span>🗓️ 8 Semanas (32 hrs) • ⚡ 2 Sesiones/sem</span>
+                  <span class="font-mono text-cyan-300" id="displayMeetEnShort">meet.jit.si/bootcampingles</span>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <a
+                    id="heroMeetLinkEn"
+                    href="https://meet.jit.si/bootcampingles"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-black text-xs sm:text-sm text-center shadow-md transition flex items-center justify-center gap-2"
+                  >
+                    <span>📹 Entrar a Sala en Vivo (Inglés)</span>
+                  </a>
+                  <button
+                    onclick="copyMeetLink('EN')"
+                    id="copyBtnEn"
+                    class="py-3 px-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs font-bold transition cursor-pointer"
+                  >
+                    📋 Copiar
+                  </button>
+                </div>
+
+                <button
+                  onclick="openBootcampCurriculum('EN')"
+                  class="w-full py-2 px-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-cyan-200 text-xs font-semibold transition cursor-pointer"
+                >
+                  📚 Ver Sílabo de 8 Semanas y Material de Inglés →
+                </button>
+              </div>
+            </div>
+
+            <!-- OPCIÓN 2: BOOTCAMP DE PORTUGUÊS DO ZERO -->
+            <div class="rounded-2xl bg-gradient-to-br from-emerald-950/90 via-slate-900/95 to-teal-950/90 border-2 border-emerald-400/50 hover:border-emerald-400 p-6 flex flex-col justify-between shadow-lg transition">
+              <div>
+                <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+                  <span class="px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
+                    🇧🇷 PORTUGUÊS DO ZERO
+                  </span>
+                  <span class="px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-400 text-slate-950">
+                    Desde Cero (Iniciantes)
+                  </span>
+                </div>
+
+                <p class="text-xs font-bold uppercase tracking-wider text-emerald-300 mb-1">
+                  Languages TAKEOFF Bootcamp · Da el primer paso hacia tus metas
+                </p>
+                <h2 class="text-xl sm:text-2xl font-black text-white mb-2">
+                  🇧🇷 Bootcamp de Português do Zero
+                </h2>
+
+                <div class="flex items-center gap-3 p-3 rounded-xl bg-white/5 border border-white/10 mb-3">
+                  <div class="w-10 h-10 rounded-full bg-emerald-500 text-slate-950 font-black text-xs flex items-center justify-center shrink-0">
+                    JL
+                  </div>
+                  <div class="text-xs">
+                    <div class="font-bold text-white flex items-center gap-1.5">
+                      <span>Jonathan Lima</span>
+                      <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                    </div>
+                    <div class="text-slate-300">Profesor de Lengua y Literatura</div>
+                  </div>
+                </div>
+
+                <p class="text-xs text-slate-300 leading-relaxed mb-4">
+                  Programa virtual de <strong>8 semanas (32 horas, 2 sesiones por semana)</strong> para empezar el portugués de Brasil desde cero: fonética, familia, rutina, movilidad en la ciudad, gastronomía, compras y presentación profesional.
+                </p>
+              </div>
+
+              <div class="space-y-2.5 pt-3 border-t border-white/10">
+                <div class="flex items-center justify-between text-xs text-slate-300">
+                  <span>🗓️ 8 Semanas (32 hrs) • ⚡ 2 Sesiones/sem</span>
+                  <span class="font-mono text-emerald-300" id="displayMeetPtShort">meet.jit.si/bootcampportugues</span>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <a
+                    id="heroMeetLinkPt"
+                    href="https://meet.jit.si/bootcampportugues"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="flex-1 py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-400 hover:to-teal-500 text-white font-black text-xs sm:text-sm text-center shadow-md transition flex items-center justify-center gap-2"
+                  >
+                    <span>📹 Entrar a Sala en Vivo (Portugués)</span>
+                  </a>
+                  <button
+                    onclick="copyMeetLink('PT')"
+                    id="copyBtnPt"
+                    class="py-3 px-3.5 rounded-xl bg-white/10 hover:bg-white/20 border border-white/15 text-white text-xs font-bold transition cursor-pointer"
+                  >
+                    📋 Copiar
+                  </button>
+                </div>
+
+                <button
+                  onclick="openBootcampCurriculum('PT')"
+                  class="w-full py-2 px-3 rounded-xl bg-white/5 hover:bg-white/15 border border-white/10 text-emerald-200 text-xs font-semibold transition cursor-pointer"
+                >
+                  📚 Ver Sílabo de 8 Semanas y Material de Portugués →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ESTADÍSTICAS DEL VIAJERO (32 HORAS / 8 SEMANAS, INICIA EN 0) -->
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-blue-500/15 text-blue-500 flex items-center justify-center text-xl">✈️</div>
+            <div>
+              <div id="statMiles" class="text-2xl font-bold">0</div>
+              <div class="text-xs text-[var(--muted-foreground)]">Millas Lingüísticas</div>
+            </div>
+          </div>
+
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-emerald-500/15 text-emerald-500 flex items-center justify-center text-xl">⏱️</div>
+            <div>
+              <div id="statFlightHours" class="text-2xl font-bold">0h / 32h</div>
+              <div class="text-xs text-[var(--muted-foreground)]">Horas de Vuelo</div>
+            </div>
+          </div>
+
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-purple-500/15 text-purple-500 flex items-center justify-center text-xl">🕒</div>
+            <div>
+              <div class="text-2xl font-bold">2h 00m</div>
+              <div class="text-xs text-[var(--muted-foreground)]">Duración por Sesión</div>
+            </div>
+          </div>
+
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-4 shadow-sm flex items-center gap-3.5">
+            <div class="w-11 h-11 rounded-xl bg-amber-500/15 text-amber-500 flex items-center justify-center text-xl">🛂</div>
+            <div>
+              <div id="statStampsCount" class="text-2xl font-bold">0 / 8</div>
+              <div class="text-xs text-[var(--muted-foreground)]">Destinos / Semanas Selladas</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ANUNCIO DE VUELO + FORMULARIO DE EVALUACIÓN BLOQUEADO HASTA EL 18 DE DICIEMBRE -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-8 rounded-2xl bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-6 shadow-lg flex flex-col justify-between">
+            <div class="flex items-start gap-4">
+              <div class="text-3xl">📣</div>
+              <div class="space-y-3 flex-1">
+                <h3 class="text-lg font-bold">✈️ Anuncio de Vuelo — Asistencia, Evaluación y Certificación Polyglot Map</h3>
+                <p class="text-xs sm:text-sm text-white/95 leading-relaxed">
+                  ¡Atención, pasajero! El Bootcamp consta de <strong>8 semanas (32 horas en vivo, 2 sesiones por semana)</strong>. En cada sesión se compartirá un link de formulario de asistencia; <strong>solamente se puede faltar a un máximo de 2 sesiones</strong> para obtener la certificación oficial por Polyglot Map.
+                </p>
+                <div class="pt-1 flex flex-wrap items-center gap-3">
+                  <button
+                    disabled
+                    class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900/70 border border-white/25 text-white/80 font-bold text-xs sm:text-sm cursor-not-allowed select-none"
+                  >
+                    <span>🔒 Ir al Formulario Oficial de Evaluación</span>
+                    <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black text-xs">Se activará el 18 de diciembre</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4 bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 shadow-sm flex flex-col justify-between space-y-3">
+            <h3 class="font-bold text-sm">⚡ Acciones Rápidas del Estudiante</h3>
+            <div class="space-y-2">
+              <button onclick="navigateView('modules')" class="w-full py-2.5 px-3.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white text-xs font-semibold text-left flex items-center justify-between cursor-pointer">
+                <span>📚 Ir a Mi Material de Clase (8 Semanas)</span>
+                <span>→</span>
+              </button>
+              <button onclick="navigateView('polyglot-map')" class="w-full py-2.5 px-3.5 rounded-xl bg-[var(--background)] hover:border-cyan-500 border border-[var(--border)] text-xs font-semibold text-left flex items-center justify-between cursor-pointer">
+                <span>🛂 Ver Mi Pasaporte & Regla de Asistencia</span>
+                <span>→</span>
+              </button>
+              <button disabled class="w-full py-2.5 px-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] opacity-70 text-[var(--muted-foreground)] text-xs font-semibold text-left flex items-center justify-between cursor-not-allowed">
+                <span>🔒 Formulario Evaluación (18 de diciembre)</span>
+                <span>⏳</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 2: MI MATERIAL DE CLASE (8 SEMANAS, INICIA SIN MARCAR)
+           ===================================================================== -->
+      <section id="view-modules" class="hidden space-y-6">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-black">📚 POLYGLOT MAP ✈️ — Mi Material de Clase (8 Semanas • 32 Horas)</h2>
+            <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
+              Marca cada semana conforme avances en tus sesiones. Tu progreso se guarda automáticamente en tu cuenta.
+            </p>
+          </div>
+
+          <div class="flex items-center gap-2 bg-[var(--background)] p-1.5 rounded-xl border border-[var(--border)]">
+            <button onclick="selectCurriculumLang('EN')" id="curr-btn-EN" class="px-4 py-2 rounded-lg text-xs font-bold bg-blue-600 text-white transition cursor-pointer">
+              🇺🇸 Conversational English (A2)
+            </button>
+            <button onclick="selectCurriculumLang('PT')" id="curr-btn-PT" class="px-4 py-2 rounded-lg text-xs font-bold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition cursor-pointer">
+              🇧🇷 Português do Zero
+            </button>
+          </div>
+        </div>
+
+        <div id="curriculumHeaderCard" class="rounded-2xl p-5 border border-[var(--border)] bg-[var(--card)]"></div>
+        <div id="weeklyModulesGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 3: ENTRAR A MIS CLASES (SALAS DE CONFERENCIA EN VIVO)
+           ===================================================================== -->
+      <section id="view-class" class="hidden space-y-6">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h2 class="text-xl font-black">📹 Mis Clases en Vivo — Puertas de Embarque</h2>
+            <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
+              8 semanas • 2 sesiones por semana (32 horas totales). Recuerda registrar tu asistencia en el link compartido durante cada sesión.
+            </p>
+          </div>
+          <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
+            ● Salas de Conferencia Activas
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-[var(--card)] border-2 border-cyan-500/40 rounded-2xl p-6 space-y-4 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-cyan-500/15 text-cyan-500">🇺🇸 SALA INGLÉS A2</span>
+                <span class="text-xs font-semibold text-emerald-500">● Sala en Vivo</span>
+              </div>
+              <h3 class="text-lg font-bold">Conversational English Bootcamp — English Power Lab</h3>
+              <p class="text-xs text-[var(--muted-foreground)] mt-1">Docente: <strong>Claudia García Conqui</strong> • 2 Sesiones / semana (8 Semanas • 32h)</p>
+
+              <div class="mt-4 p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-1.5 text-xs">
+                <div class="flex justify-between">
+                  <span class="text-[var(--muted-foreground)]">Duración del Programa:</span>
+                  <span class="font-semibold">8 Semanas (32 horas en vivo)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-[var(--muted-foreground)]">Enlace de Conferencia:</span>
+                  <span id="classViewMeetEn" class="font-mono font-bold text-cyan-500">meet.jit.si/bootcampingles</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-2 pt-2">
+              <a id="classBtnMeetEn" href="https://meet.jit.si/bootcampingles" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-4 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs text-center transition">
+                📹 Unirse a Conferencia de Inglés
+              </a>
+              <button onclick="copyMeetLink('EN')" class="py-2.5 px-4 rounded-xl border border-[var(--border)] bg-[var(--background)] text-xs font-semibold cursor-pointer">
+                📋 Copiar Link
+              </button>
+            </div>
+          </div>
+
+          <div class="bg-[var(--card)] border-2 border-emerald-500/40 rounded-2xl p-6 space-y-4 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-500">🇧🇷 SALA PORTUGUÊS DO ZERO</span>
+                <span class="text-xs font-semibold text-emerald-500">● Sala en Vivo</span>
+              </div>
+              <h3 class="text-lg font-bold">Bootcamp de Português do Zero — Languages TAKEOFF</h3>
+              <p class="text-xs text-[var(--muted-foreground)] mt-1">Docente: <strong>Jonathan Lima</strong> • 2 Sesiones / semana (8 Semanas • 32h)</p>
+
+              <div class="mt-4 p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-1.5 text-xs">
+                <div class="flex justify-between">
+                  <span class="text-[var(--muted-foreground)]">Duración del Programa:</span>
+                  <span class="font-semibold">8 Semanas (32 horas en vivo)</span>
+                </div>
+                <div class="flex justify-between">
+                  <span class="text-[var(--muted-foreground)]">Enlace de Conferencia:</span>
+                  <span id="classViewMeetPt" class="font-mono font-bold text-emerald-500">meet.jit.si/bootcampportugues</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="flex gap-2 pt-2">
+              <a id="classBtnMeetPt" href="https://meet.jit.si/bootcampportugues" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs text-center transition">
+                📹 Unirse a Conferencia de Portugués
+              </a>
+              <button onclick="copyMeetLink('PT')" class="py-2.5 px-4 rounded-xl border border-[var(--border)] bg-[var(--background)] text-xs font-semibold cursor-pointer">
+                📋 Copiar Link
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 4: PASAPORTE DIGITAL POLÍGLOTA & REGLA DE ASISTENCIA (8 SEMANAS)
+           ===================================================================== -->
+      <section id="view-polyglot-map" class="hidden space-y-6">
+        <div class="rounded-3xl bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 text-white p-6 sm:p-8 shadow-xl">
+          <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div class="w-16 h-16 sm:w-20 sm:h-20 rounded-full bg-white/20 border-4 border-white flex items-center justify-center text-4xl shadow-lg">
+                🎒
+              </div>
+              <div>
+                <h2 class="text-2xl sm:text-3xl font-black">Pasaporte Digital Políglota 🌍</h2>
+                <p class="text-sm text-white/90">Marca personalmente cada semana completada (8 Semanas • 32 Horas)</p>
+                <div class="flex flex-wrap gap-2 mt-2">
+                  <span id="passportTravelerTag" class="px-3 py-1 rounded-full text-xs font-bold bg-white/20">✈️ Viajero 1</span>
+                  <span id="passportTotalStampsBadge" class="px-3 py-1 rounded-full text-xs font-bold bg-amber-400 text-slate-950">0 / 8 Semanas Selladas</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AVISO OFICIAL DE ASISTENCIA Y CERTIFICACIÓN -->
+        <div class="rounded-2xl bg-amber-500/10 border-2 border-amber-500/40 p-5 flex items-start gap-4">
+          <div class="text-2xl shrink-0">📋</div>
+          <div class="space-y-1.5 text-xs sm:text-sm">
+            <h3 class="font-black text-amber-400 uppercase tracking-wide">
+              Control Oficial de Asistencia y Requisito de Certificación
+            </h3>
+            <p class="text-[var(--foreground)] leading-relaxed">
+              Como el Bootcamp consta de <strong>8 semanas (16 sesiones en vivo / 32 horas)</strong>, <strong>en cada sesión se compartirá en vivo un link de formulario de asistencia</strong> para registrar tu participación.
+            </p>
+            <p class="text-amber-300 font-bold">
+              ⚠️ Importante: Solamente se puede faltar a un máximo de 2 sesiones durante todo el programa para obtener la certificación oficial por Polyglot Map.
+            </p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-base">🇺🇸 Mis 8 Semanas — Conversational English</h3>
+              <span id="countBadgeEN" class="text-xs text-cyan-400 font-bold">0 / 8 sellos</span>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)] mb-4">Haz clic en cada semana conforme la completes para estampar tu sello (se guarda automáticamente en tu navegador):</p>
+            <div id="stampsGridEN" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"></div>
+          </div>
+
+          <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <h3 class="font-bold text-base">🇧🇷 Mis 8 Semanas — Português do Zero</h3>
+              <span id="countBadgePT" class="text-xs text-emerald-400 font-bold">0 / 8 sellos</span>
+            </div>
+            <p class="text-xs text-[var(--muted-foreground)] mb-4">Haz clic en cada semana conforme la completes para estampar tu sello (se guarda automáticamente en tu navegador):</p>
+            <div id="stampsGridPT" class="grid grid-cols-2 sm:grid-cols-4 gap-2.5"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 5: MAPA DE TURBULENCIAS (EN CERO + EXPLICACIÓN 18 DE DICIEMBRE)
+           ===================================================================== -->
+      <section id="view-progress" class="hidden space-y-6">
+        <div class="rounded-2xl border-2 border-orange-400/50 overflow-hidden bg-[var(--card)] shadow-lg">
+          <div class="bg-gradient-to-r from-orange-500 to-red-600 text-white p-5 flex flex-wrap items-center justify-between gap-2">
+            <div>
+              <h2 class="text-xl font-black flex items-center gap-2">⚠️ Mapa de Turbulencias por Competencia</h2>
+              <p class="text-xs sm:text-sm text-white/90 mt-0.5">
+                Los indicadores se encuentran en <strong>0%</strong> porque aún no se ha rendido la evaluación oficial del <strong>18 de diciembre</strong>.
+              </p>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-black bg-slate-950/80 text-amber-300 border border-amber-400/40">
+              📅 Evaluación Oficial: 18 de Diciembre
+            </span>
+          </div>
+
+          <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
+            <!-- Competencias en 0% -->
+            <div class="lg:col-span-7 space-y-5">
+              <!-- Modalidad Portugués: 4 competencias -->
+              <div class="p-4 rounded-2xl bg-[var(--background)] border border-emerald-500/30 space-y-3.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-black uppercase tracking-wider text-emerald-400">🇧🇷 Bootcamp de Português do Zero (4 Competencias)</span>
+                  <span class="text-xs text-[var(--muted-foreground)]">El oral tiene mayor peso ⭐</span>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs font-bold mb-1">
+                    <span>💬 1. Expresión Oral — Speaking (Mayor Peso ⭐)</span>
+                    <span class="text-[var(--muted-foreground)]">0% (Pendiente 18 Dic)</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-slate-800 overflow-hidden border border-[var(--border)]">
+                    <div class="h-full bg-emerald-500" style="width: 0%"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs font-bold mb-1">
+                    <span>👂 2. Comprensión Auditiva (Listening)</span>
+                    <span class="text-[var(--muted-foreground)]">0% (Pendiente 18 Dic)</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-slate-800 overflow-hidden border border-[var(--border)]">
+                    <div class="h-full bg-cyan-500" style="width: 0%"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs font-bold mb-1">
+                    <span>📖 3. Comprensión de Lectura (Reading)</span>
+                    <span class="text-[var(--muted-foreground)]">0% (Pendiente 18 Dic)</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-slate-800 overflow-hidden border border-[var(--border)]">
+                    <div class="h-full bg-amber-500" style="width: 0%"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div class="flex justify-between text-xs font-bold mb-1">
+                    <span>✍️ 4. Expresión Escrita (Writing)</span>
+                    <span class="text-[var(--muted-foreground)]">0% (Pendiente 18 Dic)</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-slate-800 overflow-hidden border border-[var(--border)]">
+                    <div class="h-full bg-purple-500" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Modalidad Inglés: Evaluación 100% Oral por Video -->
+              <div class="p-4 rounded-2xl bg-[var(--background)] border border-cyan-500/30 space-y-3">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-black uppercase tracking-wider text-cyan-400">🇺🇸 Conversational English Bootcamp (Evaluación Oral)</span>
+                  <span class="text-xs text-[var(--muted-foreground)]">100% Video Oral</span>
+                </div>
+                <p class="text-xs text-[var(--muted-foreground)] leading-relaxed">
+                  En el caso de <strong>Inglés</strong>, la evaluación es <strong>únicamente oral por medio del video</strong> cuyas indicaciones se explicarán en clase.
+                </p>
+                <div>
+                  <div class="flex justify-between text-xs font-bold mb-1">
+                    <span>🎥 Evaluación Oral (Presentación en Video)</span>
+                    <span class="text-[var(--muted-foreground)]">0% (Pendiente 18 Dic)</span>
+                  </div>
+                  <div class="h-2.5 rounded-full bg-slate-800 overflow-hidden border border-[var(--border)]">
+                    <div class="h-full bg-cyan-500" style="width: 0%"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Tarjeta derecha: Formulario Bloqueado hasta el 18 de diciembre -->
+            <div class="lg:col-span-5 rounded-2xl bg-slate-900 text-white p-6 flex flex-col justify-between border border-slate-800">
+              <div class="space-y-3">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-400/20 text-amber-300 border border-amber-400/30">
+                  🔒 ACCESO BLOQUEADO TEMPORALMENTE
+                </span>
+                <h3 class="text-xl font-black text-white">
+                  Formulario Oficial de Evaluación — 18 de Diciembre
+                </h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  Aún no se ha rendido ninguna evaluación. El formulario oficial se habilitará el <strong>18 de diciembre</strong>:
+                </p>
+                <ul class="text-xs text-slate-300 space-y-2 list-disc list-inside">
+                  <li><strong>Portugués:</strong> Se evaluarán las 4 competencias (<em>Comprensión Auditiva, Lectura, Oral y Escrito</em>), donde la competencia <strong>Oral tendrá mayor peso</strong>.</li>
+                  <li><strong>Inglés:</strong> Solamente se realizará la <strong>Evaluación Oral</strong> por medio del video que se explicará en clase.</li>
+                </ul>
+              </div>
+
+              <div class="pt-5 mt-5 border-t border-white/10 space-y-2">
+                <button
+                  disabled
+                  class="w-full py-3 px-4 rounded-xl bg-slate-800 border border-slate-700 text-slate-400 font-black text-xs flex items-center justify-center gap-2 cursor-not-allowed select-none"
+                >
+                  <span>🔒 Ir al Formulario Oficial de Evaluación</span>
+                </button>
+                <p class="text-center text-xs text-amber-300 font-semibold">
+                  ⏳ Se activará automáticamente el 18 de diciembre
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 6: EVALUACIÓN FINAL BLOQUEADA (SE ACTIVARÁ EL 18 DE DICIEMBRE)
+           ===================================================================== -->
+      <section id="view-evaluations" class="hidden space-y-6">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 sm:p-8 shadow-lg space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30">
+                🔒 BLOQUEADO • FECHA DE APERTURA: 18 DE DICIEMBRE
+              </span>
+              <h2 class="text-2xl font-black mt-2">📝 Formulario Oficial de Evaluación Final</h2>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Tarjeta Formulario Inglés (Bloqueado) -->
+            <div class="p-6 rounded-2xl bg-gradient-to-br from-blue-950/60 to-slate-900 border-2 border-cyan-500/30 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-cyan-400">🇺🇸 Conversational English Bootcamp</span>
+                <h3 class="text-lg font-black text-white">Evaluación Oral por Video — Inglés</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  En el Bootcamp de Inglés (con la docente <strong>Claudia García Conqui</strong>) la evaluación final consta <strong>únicamente de la Evaluación Oral por medio del video</strong> cuyas pautas se explicarán durante la clase.
+                </p>
+              </div>
+              <div class="space-y-2 pt-2">
+                <button
+                  disabled
+                  class="w-full py-3 px-4 rounded-xl bg-slate-800/90 border border-slate-700 text-slate-400 font-black text-xs sm:text-sm text-center flex items-center justify-center gap-2 cursor-not-allowed select-none"
+                >
+                  <span>🔒 Ir al Formulario Oficial de Evaluación</span>
+                </button>
+                <div class="text-center text-xs font-bold text-amber-300">
+                  ⏳ Disponible el 18 de diciembre
+                </div>
+              </div>
+            </div>
+
+            <!-- Tarjeta Formulario Portugués (Bloqueado) -->
+            <div class="p-6 rounded-2xl bg-gradient-to-br from-emerald-950/60 to-slate-900 border-2 border-emerald-500/30 flex flex-col justify-between space-y-4">
+              <div class="space-y-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">🇧🇷 Bootcamp de Português do Zero</span>
+                <h3 class="text-lg font-black text-white">Evaluación Integral de 4 Competencias — Portugués</h3>
+                <p class="text-xs text-slate-300 leading-relaxed">
+                  En el Bootcamp de Portugués (con el docente <strong>Jonathan Lima</strong>) se evaluarán <strong>4 competencias: Comprensión Auditiva, Lectura, Oral y Escrito</strong>, donde la <strong>evaluación Oral tendrá mayor peso</strong>.
+                </p>
+              </div>
+              <div class="space-y-2 pt-2">
+                <button
+                  disabled
+                  class="w-full py-3 px-4 rounded-xl bg-slate-800/90 border border-slate-700 text-slate-400 font-black text-xs sm:text-sm text-center flex items-center justify-center gap-2 cursor-not-allowed select-none"
+                >
+                  <span>🔒 Ir al Formulario Oficial de Evaluación</span>
+                </button>
+                <div class="text-center text-xs font-bold text-amber-300">
+                  ⏳ Disponible el 18 de diciembre
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script>
+    // =========================================================================
+    // USUARIOS INSCRITOS (ESTUDIANTES NOMINALES + 20 VIAJEROS)
+    // =========================================================================
+    const TRAVELER_USERS = [
+      // Estudiantes con nombre propio
+      {
+        id: 'jefferson.pena',
+        username: 'jefferson.pena',
+        aliases: ['jeffersonpena', 'jeffersonmiguelpenaserrano', 'jefferson'],
+        displayName: 'Jefferson Miguel Peña Serrano',
+        avatar: 'JP',
+        password: 'PM-JEF842'
+      },
+      {
+        id: 'yeny.diaz',
+        username: 'yeny.diaz',
+        aliases: ['yenydiaz', 'yenyfernandadiazlonga', 'yeny'],
+        displayName: 'Yeny Fernanda Diaz Longa',
+        avatar: 'YD',
+        password: 'PM-YEN519'
+      },
+      {
+        id: 'gianfranco.gil',
+        username: 'gianfranco.gil',
+        aliases: ['gianfrancogil', 'gianfrancojeissongilcabanillas', 'gianfranco'],
+        displayName: 'Gianfranco Jeisson Gil Cabanillas',
+        avatar: 'GG',
+        password: 'PM-GIA734'
+      },
+      {
+        id: 'piero.valdez',
+        username: 'piero.valdez',
+        aliases: ['pierovaldez', 'pieroalvarovaldezsolis', 'piero'],
+        displayName: 'Piero Alvaro Valdez Solis',
+        avatar: 'PV',
+        password: 'PM-PIE628'
+      },
+      {
+        id: 'adriana.chavez',
+        username: 'adriana.chavez',
+        aliases: ['adrianachavez', 'adriana'],
+        displayName: 'Adriana Chávez',
+        avatar: 'AC',
+        password: 'PM-ADR395'
+      },
+      {
+        id: 'britani.quispe',
+        username: 'britani.quispe',
+        aliases: ['britaniquispe', 'britani'],
+        displayName: 'Britani Quispe',
+        avatar: 'BQ',
+        password: 'PM-BRI471'
+      },
+      {
+        id: 'daniela.bonilla',
+        username: 'daniela.bonilla',
+        aliases: ['danielabonilla', 'daniela'],
+        displayName: 'Daniela Bonilla',
+        avatar: 'DB',
+        password: 'PM-DAN963'
+      },
+      {
+        id: 'gaylim.gonzales',
+        username: 'gaylim.gonzales',
+        aliases: ['gaylimgonzales', 'gaylim'],
+        displayName: 'Gaylim Gonzales',
+        avatar: 'GG',
+        password: 'PM-GAY286'
+      },
+      {
+        id: 'melanie.almeyda',
+        username: 'melanie.almeyda',
+        aliases: ['melaniealmeyda', 'melanie'],
+        displayName: 'Melanie Almeyda',
+        avatar: 'MA',
+        password: 'PM-MEL754'
+      },
+
+      // 20 Usuarios modo Viajero 1 a Viajero 20
+      { id: 'viajero1',  username: 'viajero 1',  displayName: 'Viajero 1',  avatar: 'V1',  password: 'PM1-K9X4' },
+      { id: 'viajero2',  username: 'viajero 2',  displayName: 'Viajero 2',  avatar: 'V2',  password: 'PM2-R7M2' },
+      { id: 'viajero3',  username: 'viajero 3',  displayName: 'Viajero 3',  avatar: 'V3',  password: 'PM3-T4P8' },
+      { id: 'viajero4',  username: 'viajero 4',  displayName: 'Viajero 4',  avatar: 'V4',  password: 'PM4-L6W3' },
+      { id: 'viajero5',  username: 'viajero 5',  displayName: 'Viajero 5',  avatar: 'V5',  password: 'PM5-N2Q9' },
+      { id: 'viajero6',  username: 'viajero 6',  displayName: 'Viajero 6',  avatar: 'V6',  password: 'PM6-B8V5' },
+      { id: 'viajero7',  username: 'viajero 7',  displayName: 'Viajero 7',  avatar: 'V7',  password: 'PM7-H3C7' },
+      { id: 'viajero8',  username: 'viajero 8',  displayName: 'Viajero 8',  avatar: 'V8',  password: 'PM8-F5J2' },
+      { id: 'viajero9',  username: 'viajero 9',  displayName: 'Viajero 9',  avatar: 'V9',  password: 'PM9-D9G4' },
+      { id: 'viajero10', username: 'viajero 10', displayName: 'Viajero 10', avatar: 'V10', password: 'PM10-Z4S6' },
+      { id: 'viajero11', username: 'viajero 11', displayName: 'Viajero 11', avatar: 'V11', password: 'PM11-W7A3' },
+      { id: 'viajero12', username: 'viajero 12', displayName: 'Viajero 12', avatar: 'V12', password: 'PM12-C2E8' },
+      { id: 'viajero13', username: 'viajero 13', displayName: 'Viajero 13', avatar: 'V13', password: 'PM13-M6Y5' },
+      { id: 'viajero14', username: 'viajero 14', displayName: 'Viajero 14', avatar: 'V14', password: 'PM14-P9U2' },
+      { id: 'viajero15', username: 'viajero 15', displayName: 'Viajero 15', avatar: 'V15', password: 'PM15-X3B7' },
+      { id: 'viajero16', username: 'viajero 16', displayName: 'Viajero 16', avatar: 'V16', password: 'PM16-V8N4' },
+      { id: 'viajero17', username: 'viajero 17', displayName: 'Viajero 17', avatar: 'V17', password: 'PM17-Q5L9' },
+      { id: 'viajero18', username: 'viajero 18', displayName: 'Viajero 18', avatar: 'V18', password: 'PM18-J2R6' },
+      { id: 'viajero19', username: 'viajero 19', displayName: 'Viajero 19', avatar: 'V19', password: 'PM19-G7T3' },
+      { id: 'viajero20', username: 'viajero 20', displayName: 'Viajero 20', avatar: 'V20', password: 'PM20-S4K8' }
+    ];
+
+    const BOOTCAMP_DATA = {
+      EN: {
+        id: 'conversational-english-bootcamp',
+        badgePill: '🗣️ CONVERSATIONAL ENGLISH',
+        title: 'Conversational English Bootcamp',
+        subtitle: 'English Power Lab · Tu inglés, en modo power',
+        levelBadge: 'Nivel A2 Requerido',
+        coachName: 'Claudia García Conqui',
+        coachRole: 'Docente de Inglés | Traductora e Intérprete',
+        duration: '8 Semanas • 32 Horas (2 Sesiones por semana)',
+        voiceLang: 'en-US',
+        weeks: [
+          { week: 1, title: 'Semana 1: Presentarse con fluidez y naturalidad', phrase: 'Hi everyone! Allow me to introduce myself and share my background.', es: '¡Hola a todos! Permítanme presentarme y compartir mi trayectoria.', materials: ['Guía PDF: Icebreakers & Natural Introductions', 'Link de Asistencia de la Sesión'] },
+          { week: 2, title: 'Semana 2: Rutina y familia', phrase: 'On weekdays I usually wake up early and catch up with my family in the evening.', es: 'Entre semana suelo despertarme temprano y ponerme al día con mi familia por la noche.', materials: ['Slides Semana 2: Daily Routines & Family', 'Link de Asistencia de la Sesión'] },
+          { week: 3, title: 'Semana 3: Gustos y planes a futuro', phrase: 'I am really looking forward to traveling abroad and advancing my career next year.', es: 'Tengo muchas ganas de viajar al extranjero y avanzar en mi carrera el próximo año.', materials: ['Worksheet: Future Plans', 'Link de Asistencia de la Sesión'] },
+          { week: 4, title: 'Semana 4: Viajes y restaurantes (situaciones reales)', phrase: 'Could we get a table for two, and what do you recommend from the menu?', es: '¿Podríamos tener una mesa para dos y qué nos recomienda del menú?', materials: ['Roleplay Kit: Airport, Hotel & Restaurants', 'Link de Asistencia de la Sesión'] },
+          { week: 5, title: 'Semana 5: Compras y vida diaria', phrase: 'Excuse me, does this come in a different size, and can I pay by card?', es: 'Disculpe, ¿tiene esto en otra talla y puedo pagar con tarjeta?', materials: ['Guía Práctica: Everyday Errands & Shopping', 'Link de Asistencia de la Sesión'] },
+          { week: 6, title: 'Semana 6: Opiniones e historias personales', phrase: 'From my perspective, that experience taught me a valuable lesson.', es: 'Desde mi perspectiva, esa experiencia me enseñó una valiosa lección.', materials: ['Storytelling Framework: Past Experiences & Opinions', 'Link de Asistencia de la Sesión'] },
+          { week: 7, title: 'Semana 7: Inglés para el trabajo y entrevistas', phrase: 'My main strength is solving complex problems and collaborating with global teams.', es: 'Mi principal fortaleza es resolver problemas complejos y colaborar con equipos globales.', materials: ['Job Interview Cheat Sheet & Pitch Políglota', 'Link de Asistencia de la Sesión'] },
+          { week: 8, title: 'Semana 8: Proyecto final y presentación en video', phrase: 'Thank you for watching my final presentation for the English Power Lab Bootcamp!', es: '¡Gracias por ver mi presentación final del Bootcamp English Power Lab!', materials: ['Evaluación Oral por Video (Se activa el 18 de diciembre)'] }
+        ]
+      },
+      PT: {
+        id: 'bootcamp-portugues-do-zero',
+        badgePill: '🇧🇷 PORTUGUÊS DO ZERO',
+        title: 'Bootcamp de Português do Zero',
+        subtitle: 'Languages TAKEOFF Bootcamp · Da el primer paso hacia tus metas',
+        levelBadge: 'Desde Cero (Iniciantes)',
+        coachName: 'Jonathan Lima',
+        coachRole: 'Profesor de Lengua y Literatura',
+        duration: '8 Semanas • 32 Horas (2 Sesiones por semana)',
+        voiceLang: 'pt-BR',
+        weeks: [
+          { week: 1, title: 'Semana 1: Presentación personal y fonética brasileña', phrase: 'Olá! Muito prazer, meu nome é estudante e estou aprendendo português do Brasil.', es: '¡Hola! Mucho gusto, soy estudiante y estoy aprendiendo portugués de Brasil.', materials: ['Guía de Fonética Brasileña', 'Link de Asistencia de la Sesión'] },
+          { week: 2, title: 'Semana 2: Familia y rutina diaria', phrase: 'Eu acordo cedo todos os dias, tomo um cafezinho e começo a trabalhar.', es: 'Me despierto temprano todos los días, tomo un cafecito y empiezo a trabajar.', materials: ['Presente Regular e Irregular + Familia', 'Link de Asistencia de la Sesión'] },
+          { week: 3, title: 'Semana 3: Expresar gustos y preferencias', phrase: 'Eu gosto muito de música brasileira, praia e aprender novos idiomas.', es: 'Me gusta mucho la música brasileña, la playa y aprender nuevos idiomas.', materials: ['Uso de Gostar de + Contracciones', 'Link de Asistencia de la Sesión'] },
+          { week: 4, title: 'Semana 4: Desenvolverte en la ciudad y movilidad', phrase: 'Com licença, como faço para chegar à estação de metrô mais próxima?', es: 'Con permiso, ¿cómo hago para llegar a la estación de metro más cercana?', materials: ['Mapa de Supervivencia Urbana', 'Link de Asistencia de la Sesión'] },
+          { week: 5, title: 'Semana 5: Restaurantes y gastronomía brasileña', phrase: 'Você pode trazer o cardápio, um pão de queijo e um suco natural, por favor?', es: '¿Puede traer el menú, un pan de queso y un jugo natural, por favor?', materials: ['Vocabulario Gastronómico & Falsos Amigos', 'Link de Asistencia de la Sesión'] },
+          { week: 6, title: 'Semana 6: Compras, regateo y situaciones cotidianas', phrase: 'Quanto custa essa camisa? Tem desconto se eu pagar no Pix ou cartão?', es: '¿Cuánto cuesta esa camisa? ¿Tiene descuento si pago con Pix o tarjeta?', materials: ['Guía de Compras, Números y Pagos', 'Link de Asistencia de la Sesión'] },
+          { week: 7, title: 'Semana 7: Conversaciones cotidianas básicas', phrase: 'Que legal! Vamos combinar de conversar mais vezes em português.', es: '¡Qué genial! Vamos a quedar para conversar más veces en portugués.', materials: ['Conectores Naturales y Gírias Brasileñas', 'Link de Asistencia de la Sesión'] },
+          { week: 8, title: 'Semana 8: Presentación profesional y video final', phrase: 'Muito obrigado pela oportunidade! Estou pronto para novos desafios profissionais.', es: '¡Muchas gracias por la oportunidad! Estoy listo para nuevos desafíos profesionales.', materials: ['Evaluación 4 Competencias (Se activa el 18 de diciembre)'] }
+        ]
+      }
+    };
+
+    // Estado inicial en CERO (ninguna sesión ni sello pre-marcado)
+    let appState = {
+      isLoggedIn: false,
+      currentUser: TRAVELER_USERS[0],
+      activeCurriculum: 'EN',
+      meetUrlEn: 'https://meet.jit.si/bootcampingles',
+      meetUrlPt: 'https://meet.jit.si/bootcampportugues',
+      completedWeeksEN: [],
+      completedWeeksPT: [],
+      miles: 0
+    };
+
+    function getStorageKeyForUser(userId) {
+      return `polyglotmap_bootcamp_v5_${userId || 'default'}`;
+    }
+
+    function loadUserProgress(userId) {
+      try {
+        const raw = localStorage.getItem(getStorageKeyForUser(userId));
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          appState.completedWeeksEN = Array.isArray(parsed.completedWeeksEN) ? parsed.completedWeeksEN : [];
+          appState.completedWeeksPT = Array.isArray(parsed.completedWeeksPT) ? parsed.completedWeeksPT : [];
+          appState.miles = typeof parsed.miles === 'number' ? parsed.miles : 0;
+          if (parsed.activeCurriculum) appState.activeCurriculum = parsed.activeCurriculum;
+        } else {
+          appState.completedWeeksEN = [];
+          appState.completedWeeksPT = [];
+          appState.miles = 0;
+        }
+      } catch (e) {
+        appState.completedWeeksEN = [];
+        appState.completedWeeksPT = [];
+        appState.miles = 0;
+      }
+    }
+
+    function saveUserProgress() {
+      try {
+        if (appState.currentUser) {
+          localStorage.setItem(getStorageKeyForUser(appState.currentUser.id), JSON.stringify({
+            completedWeeksEN: appState.completedWeeksEN,
+            completedWeeksPT: appState.completedWeeksPT,
+            miles: appState.miles,
+            activeCurriculum: appState.activeCurriculum
+          }));
+        }
+        localStorage.setItem('polyglotmap_session_v6', JSON.stringify({
+          isLoggedIn: appState.isLoggedIn,
+          currentUser: appState.currentUser,
+          meetUrlEn: appState.meetUrlEn,
+          meetUrlPt: appState.meetUrlPt
+        }));
+      } catch (e) {}
+    }
+
+    function loadSession() {
+      try {
+        const raw = localStorage.getItem('polyglotmap_session_v6');
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed.currentUser) appState.currentUser = parsed.currentUser;
+          if (typeof parsed.isLoggedIn === 'boolean') appState.isLoggedIn = parsed.isLoggedIn;
+          if (parsed.meetUrlEn) appState.meetUrlEn = parsed.meetUrlEn;
+          if (parsed.meetUrlPt) appState.meetUrlPt = parsed.meetUrlPt;
+          if (appState.currentUser) loadUserProgress(appState.currentUser.id);
+        }
+      } catch (e) {}
+    }
+
+    function normalizeUserKey(str) {
+      return (str || '')
+        .trim()
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[\s._-]+/g, '');
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const rawInput = normalizeUserKey(document.getElementById('loginUser').value);
+      const passInput = document.getElementById('loginPass').value.trim();
+
+      const matched = TRAVELER_USERS.find(u => {
+        const keys = [
+          normalizeUserKey(u.id),
+          normalizeUserKey(u.username),
+          normalizeUserKey(u.displayName),
+          ...(u.aliases || []).map(normalizeUserKey)
+        ];
+        return keys.includes(rawInput) && u.password.toLowerCase() === passInput.toLowerCase();
+      });
+
+      if (matched) {
+        document.getElementById('loginErrorMsg').classList.add('hidden');
+        appState.isLoggedIn = true;
+        appState.currentUser = matched;
+        loadUserProgress(matched.id);
+        saveUserProgress();
+        renderAuthState();
+        renderCurriculumView();
+        renderPassportAndStats();
+      } else {
+        document.getElementById('loginErrorMsg').classList.remove('hidden');
+      }
+    }
+
+    function handleLogout() {
+      appState.isLoggedIn = false;
+      saveUserProgress();
+      renderAuthState();
+    }
+
+    function renderAuthState() {
+      const loginEl = document.getElementById('loginScreen');
+      const appEl = document.getElementById('appContainer');
+      if (appState.isLoggedIn && appState.currentUser) {
+        loginEl.classList.add('hidden');
+        appEl.classList.remove('hidden');
+        const u = appState.currentUser;
+        document.getElementById('sidebarAvatar').textContent = u.avatar;
+        document.getElementById('sidebarUserName').textContent = u.displayName;
+        document.getElementById('sidebarUserCode').textContent = `Usuario: ${u.username}`;
+        document.getElementById('heroTravelerBadge').textContent = `PASAJERO: ${u.displayName.toUpperCase()}`;
+        document.getElementById('heroWelcomeName').textContent = u.displayName;
+        document.getElementById('passportTravelerTag').textContent = `✈️ ${u.displayName}`;
+      } else {
+        loginEl.classList.remove('hidden');
+        appEl.classList.add('hidden');
+      }
+    }
+
+    function navigateView(viewId) {
+      ['dashboard', 'modules', 'class', 'polyglot-map', 'progress', 'evaluations'].forEach(v => {
+        const sec = document.getElementById('view-' + v);
+        const btn = document.getElementById('nav-' + v);
+        if (v === viewId) {
+          sec.classList.remove('hidden');
+          btn.className = 'nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md whitespace-nowrap cursor-pointer';
+        } else {
+          sec.classList.add('hidden');
+          btn.className = 'nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer';
+        }
+      });
+    }
+
+    function openBootcampCurriculum(lang) {
+      selectCurriculumLang(lang);
+      navigateView('modules');
+    }
+
+    function updateLinksUI() {
+      const enUrl = appState.meetUrlEn || 'https://meet.jit.si/bootcampingles';
+      const ptUrl = appState.meetUrlPt || 'https://meet.jit.si/bootcampportugues';
+
+      document.getElementById('heroMeetLinkEn').href = enUrl;
+      document.getElementById('heroMeetLinkPt').href = ptUrl;
+      document.getElementById('classBtnMeetEn').href = enUrl;
+      document.getElementById('classBtnMeetPt').href = ptUrl;
+
+      const shortEn = enUrl.replace(/^https?:\/\//, '');
+      const shortPt = ptUrl.replace(/^https?:\/\//, '');
+
+      document.getElementById('displayMeetEnShort').textContent = shortEn;
+      document.getElementById('displayMeetPtShort').textContent = shortPt;
+      document.getElementById('classViewMeetEn').textContent = shortEn;
+      document.getElementById('classViewMeetPt').textContent = shortPt;
+
+      document.getElementById('inputMeetEn').value = enUrl;
+      document.getElementById('inputMeetPt').value = ptUrl;
+    }
+
+    function toggleEditLinksPanel() {
+      document.getElementById('editLinksPanel').classList.toggle('hidden');
+    }
+
+    function saveCustomLinks() {
+      const enVal = document.getElementById('inputMeetEn').value.trim();
+      const ptVal = document.getElementById('inputMeetPt').value.trim();
+      if (enVal) appState.meetUrlEn = enVal;
+      if (ptVal) appState.meetUrlPt = ptVal;
+      saveUserProgress();
+      updateLinksUI();
+      document.getElementById('editLinksPanel').classList.add('hidden');
+    }
+
+    function copyMeetLink(lang) {
+      const url = lang === 'EN' ? appState.meetUrlEn : appState.meetUrlPt;
+      if (navigator.clipboard) navigator.clipboard.writeText(url);
+      const btn = document.getElementById(lang === 'EN' ? 'copyBtnEn' : 'copyBtnPt');
+      if (btn) {
+        const old = btn.textContent;
+        btn.textContent = '✓ ¡Copiado!';
+        setTimeout(() => { btn.textContent = old; }, 1800);
+      }
+    }
+
+    function speakPhrase(text, langCode) {
+      if (!('speechSynthesis' in window)) return;
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(text);
+      u.lang = langCode;
+      u.rate = 0.95;
+      window.speechSynthesis.speak(u);
+    }
+
+    function selectCurriculumLang(lang) {
+      appState.activeCurriculum = lang;
+      const btnEn = document.getElementById('curr-btn-EN');
+      const btnPt = document.getElementById('curr-btn-PT');
+      if (lang === 'EN') {
+        btnEn.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-blue-600 text-white transition cursor-pointer';
+        btnPt.className = 'px-4 py-2 rounded-lg text-xs font-bold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition cursor-pointer';
+      } else {
+        btnPt.className = 'px-4 py-2 rounded-lg text-xs font-bold bg-emerald-600 text-white transition cursor-pointer';
+        btnEn.className = 'px-4 py-2 rounded-lg text-xs font-bold text-[var(--muted-foreground)] hover:text-[var(--foreground)] transition cursor-pointer';
+      }
+      renderCurriculumView();
+      renderPassportAndStats();
+      saveUserProgress();
+    }
+
+    function renderCurriculumView() {
+      const lang = appState.activeCurriculum;
+      const data = BOOTCAMP_DATA[lang];
+      const completedArr = lang === 'EN' ? appState.completedWeeksEN : appState.completedWeeksPT;
+      const meetUrl = lang === 'EN' ? appState.meetUrlEn : appState.meetUrlPt;
+
+      document.getElementById('curriculumHeaderCard').innerHTML = `
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div class="space-y-1">
+            <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${lang === 'EN' ? 'bg-blue-500/15 text-blue-500' : 'bg-emerald-500/15 text-emerald-500'}">
+              ${data.badgePill} • ${data.levelBadge}
+            </span>
+            <h3 class="text-lg font-black">${data.title} — ${data.subtitle}</h3>
+            <p class="text-xs text-[var(--muted-foreground)]">
+              Docente Oficial: <strong>${data.coachName}</strong> (${data.coachRole}) • ${data.duration}
+            </p>
+          </div>
+          <a href="${meetUrl}" target="_blank" rel="noopener noreferrer" class="px-4 py-2.5 rounded-xl ${lang === 'EN' ? 'bg-blue-600 hover:bg-blue-500' : 'bg-emerald-600 hover:bg-emerald-500'} text-white text-xs font-bold shadow-sm">
+            📹 Entrar a Sala en Vivo de ${lang === 'EN' ? 'Inglés' : 'Portugués'}
+          </a>
+        </div>
+      `;
+
+      document.getElementById('weeklyModulesGrid').innerHTML = data.weeks.map(w => {
+        const isDone = completedArr.includes(w.week);
+        return `
+          <div class="bg-[var(--card)] border ${isDone ? 'border-emerald-500/50' : 'border-[var(--border)]'} rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-sm">
+            <div>
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-bold uppercase tracking-wider ${lang === 'EN' ? 'text-blue-500' : 'text-emerald-500'}">
+                  Módulo Semana ${w.week} (4 hrs en vivo)
+                </span>
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold ${isDone ? 'bg-emerald-500/15 text-emerald-500' : 'bg-[var(--background)] text-[var(--muted-foreground)]'}">
+                  ${isDone ? '✓ Completada por ti' : 'Pendiente'}
+                </span>
+              </div>
+              <h4 class="text-base font-bold">${w.title}</h4>
+              <div class="mt-3 p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-1">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs text-[var(--muted-foreground)] font-semibold">Práctica Oral de la Semana:</span>
+                  <button onclick="speakPhrase('${w.phrase.replace(/'/g, "\\'")}', '${data.voiceLang}')" class="px-2.5 py-1 rounded-lg bg-[var(--card)] border border-[var(--border)] hover:border-cyan-500 text-xs font-bold cursor-pointer">
+                    🔊 Escuchar
+                  </button>
+                </div>
+                <p class="text-xs font-bold">"${w.phrase}"</p>
+                <p class="text-xs text-[var(--muted-foreground)] italic">${w.es}</p>
+              </div>
+              <div class="mt-3 space-y-1">
+                ${w.materials.map(m => `
+                  <div class="text-xs text-[var(--muted-foreground)] flex items-center gap-1.5">
+                    <span>📄</span> <span>${m}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            <div class="pt-3 border-t border-[var(--border)] flex items-center justify-between">
+              <span class="text-xs text-[var(--muted-foreground)]">+150 Millas Lingüísticas</span>
+              <button onclick="toggleWeekStamp('${lang}', ${w.week})" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
+                isDone
+                  ? 'bg-emerald-500/15 text-emerald-500 border border-emerald-500/30'
+                  : 'bg-blue-600 hover:bg-blue-500 text-white'
+              }">
+                ${isDone ? '✓ Semana Sellada (Desmarcar)' : 'Marcar Semana Completada'}
+              </button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function toggleWeekStamp(lang, weekNum) {
+      const arr = lang === 'EN' ? appState.completedWeeksEN : appState.completedWeeksPT;
+      const idx = arr.indexOf(weekNum);
+      if (idx === -1) {
+        arr.push(weekNum);
+        appState.miles += 150;
+      } else {
+        arr.splice(idx, 1);
+        appState.miles = Math.max(0, appState.miles - 150);
+      }
+      saveUserProgress();
+      renderCurriculumView();
+      renderPassportAndStats();
+    }
+
+    // =========================================================================
+    // PASAPORTE DIGITAL Y MÉTRICAS (SOBRE 8 SEMANAS Y 32 HORAS)
+    // =========================================================================
+    function renderPassportAndStats() {
+      const activeArr = appState.activeCurriculum === 'EN' ? appState.completedWeeksEN : appState.completedWeeksPT;
+      const stampsCount = Math.min(8, Math.max(appState.completedWeeksEN.length, appState.completedWeeksPT.length));
+      const flightHours = stampsCount * 4; // 8 semanas * 4h = 32h
+
+      document.getElementById('statMiles').textContent = appState.miles.toLocaleString();
+      document.getElementById('statFlightHours').textContent = `${flightHours}h / 32h`;
+      document.getElementById('statStampsCount').textContent = `${stampsCount} / 8`;
+      document.getElementById('passportTotalStampsBadge').textContent = `${stampsCount} / 8 Semanas Selladas`;
+
+      document.getElementById('countBadgeEN').textContent = `${appState.completedWeeksEN.length} / 8 sellos`;
+      document.getElementById('countBadgePT').textContent = `${appState.completedWeeksPT.length} / 8 sellos`;
+
+      document.getElementById('stampsGridEN').innerHTML = BOOTCAMP_DATA.EN.weeks.map(w => {
+        const done = appState.completedWeeksEN.includes(w.week);
+        return `
+          <div onclick="toggleWeekStamp('EN', ${w.week})" class="cursor-pointer p-3 rounded-xl border text-center transition ${
+            done ? 'bg-cyan-500/15 border-cyan-500 text-cyan-500' : 'bg-[var(--background)] border-dashed border-[var(--border)] text-[var(--muted-foreground)] hover:border-cyan-500/40'
+          }">
+            <div class="text-lg">${done ? '🛂' : '⭕'}</div>
+            <div class="text-xs font-bold mt-1">Semana ${w.week}</div>
+            <div class="text-xs">${done ? 'SELLADO' : 'Sin sellar'}</div>
+          </div>
+        `;
+      }).join('');
+
+      document.getElementById('stampsGridPT').innerHTML = BOOTCAMP_DATA.PT.weeks.map(w => {
+        const done = appState.completedWeeksPT.includes(w.week);
+        return `
+          <div onclick="toggleWeekStamp('PT', ${w.week})" class="cursor-pointer p-3 rounded-xl border text-center transition ${
+            done ? 'bg-emerald-500/15 border-emerald-500 text-emerald-500' : 'bg-[var(--background)] border-dashed border-[var(--border)] text-[var(--muted-foreground)] hover:border-emerald-500/40'
+          }">
+            <div class="text-lg">${done ? '🛂' : '⭕'}</div>
+            <div class="text-xs font-bold mt-1">Semana ${w.week}</div>
+            <div class="text-xs">${done ? 'SELLADO' : 'Sin sellar'}</div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    loadSession();
+    renderAuthState();
+    updateLinksUI();
+    renderCurriculumView();
+    renderPassportAndStats();
+  </script>
+</body>
+</html>
