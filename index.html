@@ -51,7 +51,7 @@
             Portal del Estudiante: Inglés & Português do Zero
           </h2>
           <p class="text-sm text-slate-200 leading-relaxed mb-6">
-            Bienvenido a tu cabina de vuelo. Ingresa con tu usuario y contraseña asignados para acceder a tus salas de Google Meet en vivo, sílabo de 8 semanas, pasaporte digital y evaluaciones.
+            Bienvenido a tu cabina de vuelo. Ingresa con tu usuario y contraseña asignados para acceder a tu clase virtual, sílabo de 8 semanas, pasaporte digital y evaluaciones.
           </p>
 
           <!-- Tarjetas resumen de los 2 bootcamps -->
@@ -167,7 +167,7 @@
 
         <nav class="p-3 space-y-1.5 flex lg:flex-col overflow-x-auto">
           <button onclick="navigateView('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md whitespace-nowrap cursor-pointer">
-            <span>🏠</span> <span>Inicio & Salas Meet</span>
+            <span>🏠</span> <span>Inicio & Clase Virtual</span>
           </button>
           <button onclick="navigateView('modules')" id="nav-modules" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
             <span>📚</span> <span>Mi Material (8 Semanas)</span>
@@ -198,7 +198,7 @@
     <main class="flex-1 overflow-y-auto p-4 sm:p-6 lg:p-8 space-y-6">
 
       <!-- =====================================================================
-           VISTA 1: INICIO (HERO CON LAS 2 OPCIONES: INGLÉS Y PORTUGUÉS + MEET)
+           VISTA 1: INICIO (HERO CON LAS 2 OPCIONES: INGLÉS Y PORTUGUÉS)
            ===================================================================== -->
       <section id="view-dashboard" class="space-y-6">
         <div class="rounded-3xl bg-gradient-to-br from-slate-950 via-[#0b102b] to-indigo-950 text-white p-6 sm:p-8 border border-indigo-500/30 shadow-xl relative overflow-hidden">
@@ -209,7 +209,7 @@
               <span class="text-amber-300" id="heroTravelerBadge">PASAJERO: VIAJERO 1</span>
             </div>
             <button onclick="toggleEditLinksPanel()" class="text-xs font-semibold px-3 py-1 rounded-lg bg-white/10 hover:bg-white/20 border border-white/15 text-cyan-200 cursor-pointer">
-              ⚙️ Configurar links de Google Meet
+              ⚙️ Configurar links de Clase Virtual
             </button>
           </div>
 
@@ -217,19 +217,19 @@
             ¡Bienvenido a bordo, <span id="heroWelcomeName" class="text-cyan-300">Viajero 1</span>! 🌍✈️
           </h1>
           <p class="text-sm sm:text-base text-slate-300 max-w-3xl mb-6">
-            Elige tu ruta de vuelo para hoy: ingresa directamente a tu sesión en vivo por <strong>Google Meet</strong> o explora las 8 semanas de tu programa intensivo.
+            Elige tu ruta de vuelo para hoy: ingresa directamente a tu <strong>clase virtual</strong> o explora las 8 semanas de tu programa intensivo.
           </p>
 
           <!-- Panel de configuración de enlaces -->
           <div id="editLinksPanel" class="hidden mb-6 p-4 rounded-2xl bg-slate-900/95 border border-cyan-500/40 space-y-3">
-            <div class="text-xs font-bold text-cyan-300 uppercase">Configurar enlaces oficiales de Google Meet</div>
+            <div class="text-xs font-bold text-cyan-300 uppercase">Configurar enlaces oficiales de Clase Virtual</div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
               <div>
-                <label class="block text-xs text-slate-300 mb-1">🇺🇸 Link Google Meet — Inglés:</label>
+                <label class="block text-xs text-slate-300 mb-1">🇺🇸 Link Clase Virtual — Inglés:</label>
                 <input id="inputMeetEn" type="url" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono" />
               </div>
               <div>
-                <label class="block text-xs text-slate-300 mb-1">🇧🇷 Link Google Meet — Portugués:</label>
+                <label class="block text-xs text-slate-300 mb-1">🇧🇷 Link Clase Virtual — Portugués:</label>
                 <input id="inputMeetPt" type="url" class="w-full px-3 py-1.5 rounded-lg bg-slate-950 border border-slate-700 text-xs text-white font-mono" />
               </div>
             </div>
