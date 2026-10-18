@@ -257,6 +257,11 @@
               </div>
 
               <div class="space-y-2.5 pt-3 border-t border-white/10">
+                <div class="w-full py-2 px-3 rounded-xl bg-amber-400/20 border-2 border-amber-400/50 text-amber-300 font-black text-xs flex items-center justify-center gap-2 shadow-sm">
+                  <span>🕒</span>
+                  <span>Inglés: Miércoles y Viernes • 10:30 a.m. - 12:00 p.m. (Hora Peruana)</span>
+                </div>
+
                 <div class="flex items-center justify-between text-xs text-slate-300">
                   <span>🗓️ 8 Semanas (32 hrs) • ⚡ 2 Sesiones/sem</span>
                   <span class="font-mono text-cyan-300" id="displayMeetEnShort">meet.jit.si/bootcampingles</span>
@@ -328,6 +333,11 @@
               </div>
 
               <div class="space-y-2.5 pt-3 border-t border-white/10">
+                <div class="w-full py-2 px-3 rounded-xl bg-amber-400/20 border-2 border-amber-400/50 text-amber-300 font-black text-xs flex items-center justify-center gap-2 shadow-sm">
+                  <span>🕒</span>
+                  <span>Portugués: Martes y Jueves • 7:00 - 9:00 p.m. (Hora Peruana)</span>
+                </div>
+
                 <div class="flex items-center justify-between text-xs text-slate-300">
                   <span>🗓️ 8 Semanas (32 hrs) • ⚡ 2 Sesiones/sem</span>
                   <span class="font-mono text-emerald-300" id="displayMeetPtShort">meet.jit.si/bootcampportugues</span>
@@ -471,16 +481,30 @@
            VISTA 3: ENTRAR A MIS CLASES (SALAS DE CONFERENCIA EN VIVO)
            ===================================================================== -->
       <section id="view-class" class="hidden space-y-6">
-        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 flex flex-wrap items-center justify-between gap-4">
-          <div>
-            <h2 class="text-xl font-black">📹 Mis Clases en Vivo — Puertas de Embarque</h2>
-            <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
-              8 semanas • 2 sesiones por semana (32 horas totales). Recuerda registrar tu asistencia en el link compartido durante cada sesión.
-            </p>
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-2xl p-5 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-4">
+            <div>
+              <h2 class="text-xl font-black">📹 Mis Clases en Vivo — Puertas de Embarque</h2>
+              <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
+                8 semanas • 2 sesiones por semana (32 horas totales). Recuerda registrar tu asistencia en el link compartido durante cada sesión.
+              </p>
+            </div>
+            <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
+              ● Salas de Conferencia Activas
+            </span>
           </div>
-          <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-500/15 text-emerald-500 border border-emerald-500/30">
-            ● Salas de Conferencia Activas
-          </span>
+
+          <!-- Botones destacados de Horario Oficial -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 border-t border-[var(--border)]">
+            <div class="py-3 px-4 rounded-xl bg-gradient-to-r from-cyan-500/20 to-blue-600/20 border-2 border-cyan-400 text-cyan-300 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md text-center">
+              <span>🇺🇸</span>
+              <span>🕒 Inglés: Miércoles y Viernes • 10:30 a.m. - 12:00 p.m. (hora peruana)</span>
+            </div>
+            <div class="py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-500/20 to-teal-600/20 border-2 border-emerald-400 text-emerald-300 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md text-center">
+              <span>🇧🇷</span>
+              <span>🕒 Portugués: Martes y Jueves • 7:00 - 9:00 p.m. (hora peruana)</span>
+            </div>
+          </div>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -493,7 +517,12 @@
               <h3 class="text-lg font-bold">Conversational English Bootcamp — English Power Lab</h3>
               <p class="text-xs text-[var(--muted-foreground)] mt-1">Docente: <strong>Claudia García Conqui</strong> • 2 Sesiones / semana (8 Semanas • 32h)</p>
 
-              <div class="mt-4 p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-1.5 text-xs">
+              <!-- Botón de Horario Inglés -->
+              <div class="mt-3 py-2.5 px-3.5 rounded-xl bg-amber-400 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md text-center">
+                <span>⏰ Horario Inglés: Miércoles y Viernes 10:30 a.m. - 12:00 p.m. (hora peruana)</span>
+              </div>
+
+              <div class="mt-3 p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-1.5 text-xs">
                 <div class="flex justify-between">
                   <span class="text-[var(--muted-foreground)]">Duración del Programa:</span>
                   <span class="font-semibold">8 Semanas (32 horas en vivo)</span>
@@ -524,7 +553,12 @@
               <h3 class="text-lg font-bold">Bootcamp de Português do Zero — Languages TAKEOFF</h3>
               <p class="text-xs text-[var(--muted-foreground)] mt-1">Docente: <strong>Jonathan Lima</strong> • 2 Sesiones / semana (8 Semanas • 32h)</p>
 
-              <div class="mt-4 p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-1.5 text-xs">
+              <!-- Botón de Horario Portugués -->
+              <div class="mt-3 py-2.5 px-3.5 rounded-xl bg-amber-400 text-slate-950 font-black text-xs sm:text-sm flex items-center justify-center gap-2 shadow-md text-center">
+                <span>⏰ Horario Portugués: Martes y Jueves 7:00 - 9:00 p.m. (hora peruana)</span>
+              </div>
+
+              <div class="mt-3 p-3.5 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-1.5 text-xs">
                 <div class="flex justify-between">
                   <span class="text-[var(--muted-foreground)]">Duración del Programa:</span>
                   <span class="font-semibold">8 Semanas (32 horas en vivo)</span>
