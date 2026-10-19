@@ -184,6 +184,14 @@
           <button onclick="navigateView('evaluations')" id="nav-evaluations" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
             <span>🔒</span> <span>Evaluación (18 Dic)</span>
           </button>
+          <button onclick="navigateView('certification')" id="nav-certification" class="nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
+            <span class="flex items-center gap-3">
+              <span>🎓</span> <span>Certificación</span>
+            </span>
+            <span class="px-2 py-0.5 rounded-full text-[10px] font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+              🔒 18 Dic
+            </span>
+          </button>
         </nav>
       </div>
 
@@ -821,6 +829,72 @@
                   ⏳ Disponible el 18 de diciembre
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+           VISTA 7: CERTIFICACIÓN OFICIAL BLOQUEADA (DISPONIBLE EL 18 DE DICIEMBRE)
+           ===================================================================== -->
+      <section id="view-certification" class="hidden space-y-6">
+        <div class="bg-[var(--card)] border border-[var(--border)] rounded-3xl p-6 sm:p-8 shadow-lg space-y-6">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <span class="px-3.5 py-1 rounded-full text-xs font-bold bg-amber-500/15 text-amber-400 border border-amber-500/30 inline-flex items-center gap-1.5">
+                <span>🔒</span> <span>ESTADO: BLOQUEADO TEMPORALMENTE</span>
+              </span>
+              <h2 class="text-2xl sm:text-3xl font-black mt-2">🎓 Certificación Oficial — Languages TAKEOFF</h2>
+              <p class="text-sm text-[var(--muted-foreground)] mt-1">
+                La emisión de certificados oficiales con código QR y validación académica se habilitará el <strong>18 de diciembre</strong>.
+              </p>
+            </div>
+          </div>
+
+          <div class="p-5 sm:p-6 rounded-2xl bg-amber-500/10 border-2 border-amber-500/30 space-y-2">
+            <div class="flex items-start gap-3">
+              <span class="text-2xl shrink-0">ℹ️</span>
+              <div class="text-sm text-slate-200 leading-relaxed">
+                <strong class="text-amber-300">¿Por qué está bloqueada esta pestaña?</strong><br/>
+                La certificación oficial acredita <strong>32 horas académicas</strong> en el Bootcamp (Inglés / Portugués). Para obtenerla, los estudiantes deberán registrar su asistencia y aprobar la evaluación final programada para el <strong>18 de diciembre</strong>.
+              </div>
+            </div>
+          </div>
+
+          <!-- Requisitos claros para estudiantes -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="p-5 rounded-2xl bg-[var(--background)] border border-[var(--border)] space-y-2">
+              <div class="text-2xl">📅</div>
+              <h4 class="font-bold text-base text-[var(--foreground)]">1. Asistencia a Clases</h4>
+              <p class="text-xs sm:text-sm text-[var(--muted-foreground)] leading-relaxed">
+                Participar al menos en el 80% de las 16 sesiones en vivo (32 horas académicas totales).
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-[var(--background)] border border-[var(--border)] space-y-2">
+              <div class="text-2xl">🗣️</div>
+              <h4 class="font-bold text-base text-[var(--foreground)]">2. Evaluación Final (18 Dic)</h4>
+              <p class="text-xs sm:text-sm text-[var(--muted-foreground)] leading-relaxed">
+                Rendir y aprobar la evaluación oral o video challenge de la Semana 8.
+              </p>
+            </div>
+            <div class="p-5 rounded-2xl bg-[var(--background)] border border-[var(--border)] space-y-2">
+              <div class="text-2xl">📜</div>
+              <h4 class="font-bold text-base text-[var(--foreground)]">3. Emisión de Certificado</h4>
+              <p class="text-xs sm:text-sm text-[var(--muted-foreground)] leading-relaxed">
+                Descarga tu certificado oficial en PDF con código QR único a partir del 18 de diciembre.
+              </p>
+            </div>
+          </div>
+
+          <!-- Vista Previa Certificado en Marca de Agua -->
+          <div class="p-8 rounded-2xl bg-gradient-to-br from-slate-950 via-[#0d1330] to-indigo-950 border-2 border-dashed border-white/20 text-center space-y-4 relative overflow-hidden">
+            <div class="text-5xl opacity-40">🎓</div>
+            <h3 class="text-xl font-black text-white">Certificado Oficial de Aprobación de Bootcamp</h3>
+            <p class="text-sm text-slate-300 max-w-lg mx-auto">
+              Acreditado a nombre del estudiante inscrito por <strong>Languages TAKEOFF & Polyglot Map</strong>.
+            </p>
+            <div class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-xs sm:text-sm font-bold text-amber-300">
+              <span>🔒 Emisión y verificación disponibles a partir del 18 de Diciembre de 2026</span>
             </div>
           </div>
         </div>
@@ -1566,7 +1640,7 @@
         document.getElementById('passportTravelerTag').textContent = `✈️ ${u.displayName}`;
 
         // Ocultar vistas de estudiante para docentes
-        ['nav-polyglot-map', 'nav-progress', 'nav-evaluations'].forEach(id => {
+        ['nav-polyglot-map', 'nav-progress', 'nav-evaluations', 'nav-certification'].forEach(id => {
           const el = document.getElementById(id);
           if (el) el.classList.toggle('hidden', isTeacher);
         });
@@ -1603,20 +1677,20 @@
 
     function navigateView(viewId) {
       if (appState.currentUser && appState.currentUser.role === 'teacher') {
-        if (['polyglot-map', 'progress', 'evaluations'].includes(viewId)) {
+        if (['polyglot-map', 'progress', 'evaluations', 'certification'].includes(viewId)) {
           viewId = 'dashboard';
         }
       }
-      ['dashboard', 'modules', 'class', 'polyglot-map', 'progress', 'evaluations'].forEach(v => {
+      ['dashboard', 'modules', 'class', 'polyglot-map', 'progress', 'evaluations', 'certification'].forEach(v => {
         const sec = document.getElementById('view-' + v);
         const btn = document.getElementById('nav-' + v);
-        const isTeacherHidden = appState.currentUser && appState.currentUser.role === 'teacher' && ['polyglot-map', 'progress', 'evaluations'].includes(v);
+        const isTeacherHidden = appState.currentUser && appState.currentUser.role === 'teacher' && ['polyglot-map', 'progress', 'evaluations', 'certification'].includes(v);
         if (v === viewId) {
-          sec.classList.remove('hidden');
-          btn.className = 'nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md whitespace-nowrap cursor-pointer';
+          if (sec) sec.classList.remove('hidden');
+          if (btn) btn.className = 'nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold bg-gradient-to-r from-cyan-500 to-blue-500 text-white shadow-md whitespace-nowrap cursor-pointer';
         } else {
-          sec.classList.add('hidden');
-          btn.className = (isTeacherHidden ? 'hidden ' : '') + 'nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer';
+          if (sec) sec.classList.add('hidden');
+          if (btn) btn.className = (isTeacherHidden ? 'hidden ' : '') + 'nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer';
         }
       });
     }
@@ -1710,54 +1784,68 @@
       document.getElementById('weeklyModulesGrid').innerHTML = data.weeks.map(w => {
         const isDone = completedArr.includes(w.week);
         return `
-          <div class="bg-[var(--card)] border ${isDone ? 'border-emerald-500/50' : 'border-[var(--border)]'} rounded-2xl p-5 flex flex-col justify-between space-y-4 shadow-sm">
-            <div>
-              <div class="flex items-center justify-between gap-2 mb-2">
-                <span class="text-xs font-bold uppercase tracking-wider ${lang === 'EN' ? 'text-blue-500' : 'text-emerald-500'}">
-                  Módulo Semana ${w.week} (2 sesiones • 4 hrs en vivo)
+          <div class="bg-[var(--card)] border-2 ${isDone ? 'border-emerald-500/70 shadow-emerald-950/20' : 'border-[var(--border)]'} rounded-3xl p-6 sm:p-7 flex flex-col justify-between space-y-5 shadow-md transition">
+            <div class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2">
+                <span class="text-xs sm:text-sm font-black uppercase tracking-wider ${lang === 'EN' ? 'text-blue-400' : 'text-emerald-400'}">
+                  🗓️ Módulo Semana ${w.week} • 2 Sesiones (4h en vivo)
                 </span>
-                <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold ${isDone ? 'bg-emerald-500/15 text-emerald-500' : 'bg-[var(--background)] text-[var(--muted-foreground)]'}">
-                  ${isDone ? (isTeacher ? '✓ Semana Dictada' : '✓ Completada por ti') : 'Pendiente'}
+                <span class="px-3 py-1 rounded-full text-xs font-bold ${isDone ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/50' : 'bg-slate-800 text-slate-300 border border-slate-700'}">
+                  ${isDone ? (isTeacher ? '✅ Semana Dictada' : '✅ Completada por ti') : '⏳ Pendiente'}
                 </span>
               </div>
-              <h4 class="text-base font-bold">${w.title}</h4>
-              <div class="mt-3 p-3 rounded-xl bg-[var(--background)] border border-[var(--border)] space-y-1">
-                <div class="flex items-center justify-between">
-                  <span class="text-xs text-[var(--muted-foreground)] font-semibold">Práctica Oral de la Semana:</span>
-                  <button onclick="speakPhrase('${w.phrase.replace(/'/g, "\\'")}', '${data.voiceLang}')" class="px-2.5 py-1 rounded-lg bg-[var(--card)] border border-[var(--border)] hover:border-cyan-500 text-xs font-bold cursor-pointer">
-                    🔊 Escuchar
-                  </button>
-                </div>
-                <p class="text-xs font-bold">"${w.phrase}"</p>
-                <p class="text-xs text-[var(--muted-foreground)] italic">${w.es}</p>
+
+              <h4 class="text-lg sm:text-xl font-black text-white leading-snug">${w.title}</h4>
+
+              <!-- Práctica Oral de la Semana (Sin botón de escuchar, tipografía grande y clara) -->
+              <div class="p-4 sm:p-5 rounded-2xl bg-slate-900/90 border border-slate-700/80 space-y-1.5">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-cyan-300 flex items-center gap-1.5">
+                  🗣️ Frase para practicar en clase:
+                </span>
+                <p class="text-base sm:text-lg font-bold text-white leading-relaxed">"${w.phrase}"</p>
+                <p class="text-xs sm:text-sm text-slate-300 italic">Traducción: ${w.es}</p>
               </div>
-              <div class="mt-3 space-y-2">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-[var(--muted-foreground)] block">MATERIALES DE CLASE (2 SESIONES):</span>
-                ${w.materials.map(m => {
-                  if (typeof m === 'object' && m.url) {
+
+              <!-- Materiales de Estudio (Botones grandes y fáciles de pulsar) -->
+              <div class="space-y-2 pt-1">
+                <span class="text-xs font-extrabold uppercase tracking-wider text-amber-300 flex items-center gap-1.5">
+                  📚 Materiales de clase (2 sesiones por semana):
+                </span>
+                <div class="space-y-2.5">
+                  ${w.materials.map(m => {
+                    if (typeof m === 'object' && m.url) {
+                      return `
+                        <a href="${m.url}" target="_blank" rel="noopener noreferrer" class="p-3.5 sm:p-4 rounded-xl ${lang === 'EN' ? 'bg-blue-950/40 hover:bg-blue-900/50 border-blue-500/40' : 'bg-emerald-950/40 hover:bg-emerald-900/50 border-emerald-500/40'} border-2 flex items-center justify-between gap-3 text-white transition group">
+                          <span class="flex items-center gap-2.5 min-w-0">
+                            <span class="text-xl shrink-0">📕</span>
+                            <span class="text-xs sm:text-sm font-bold text-slate-100 group-hover:text-white truncate">${m.title}</span>
+                          </span>
+                          <span class="shrink-0 text-xs font-black px-3.5 py-1.5 rounded-lg ${lang === 'EN' ? 'bg-blue-500 text-white group-hover:bg-blue-400' : 'bg-emerald-500 text-slate-950 group-hover:bg-emerald-400'} shadow-sm flex items-center gap-1">
+                            <span>Ver PDF</span> <span>↗</span>
+                          </span>
+                        </a>
+                      `;
+                    }
                     return `
-                      <a href="${m.url}" target="_blank" rel="noopener noreferrer" class="text-xs font-semibold ${lang === 'EN' ? 'text-blue-400' : 'text-emerald-400'} hover:underline flex items-center justify-between gap-2 p-2 rounded-xl ${lang === 'EN' ? 'bg-blue-500/10 hover:bg-blue-500/20 border-blue-500/30' : 'bg-emerald-500/10 hover:bg-emerald-500/20 border-emerald-500/30'} border transition">
-                        <span class="flex items-center gap-2 min-w-0 truncate"><span>📕</span> <span class="truncate">${m.title}</span></span>
-                        <span class="shrink-0 text-[10px] font-bold px-2 py-0.5 rounded-md ${lang === 'EN' ? 'bg-blue-500/20 text-blue-300' : 'bg-emerald-500/20 text-emerald-300'}">Abrir PDF ↗</span>
-                      </a>
+                      <div class="text-xs sm:text-sm text-slate-300 p-2.5 rounded-lg bg-slate-800/50 border border-slate-700 flex items-center gap-2">
+                        <span>📄</span> <span>${m}</span>
+                      </div>
                     `;
-                  }
-                  return `
-                    <div class="text-xs text-[var(--muted-foreground)] flex items-center gap-1.5">
-                      <span>📄</span> <span>${m}</span>
-                    </div>
-                  `;
-                }).join('')}
+                  }).join('')}
+                </div>
               </div>
             </div>
-            <div class="pt-3 border-t border-[var(--border)] flex items-center justify-between">
-              <span class="text-xs text-[var(--muted-foreground)]">${isTeacher ? '👩‍🏫 Control Docente de Sílabo' : '+150 Millas Lingüísticas'}</span>
-              <button onclick="toggleWeekStamp('${lang}', ${w.week})" class="px-3.5 py-1.5 rounded-xl text-xs font-bold transition cursor-pointer ${
+
+            <div class="pt-4 border-t border-slate-700/80 flex flex-wrap items-center justify-between gap-3">
+              <span class="text-xs sm:text-sm font-bold text-amber-300 flex items-center gap-1.5">
+                <span>⭐</span> <span>${isTeacher ? '👩‍🏫 Control Docente' : '+150 Millas de Progreso'}</span>
+              </span>
+              <button onclick="toggleWeekStamp('${lang}', ${w.week})" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold transition cursor-pointer shadow-md ${
                 isDone
-                  ? 'bg-emerald-500/15 text-emerald-500 border border-emerald-500/30'
-                  : 'bg-blue-600 hover:bg-blue-500 text-white'
+                  ? 'bg-emerald-500/20 text-emerald-300 border-2 border-emerald-500/50 hover:bg-emerald-500/30'
+                  : (lang === 'EN' ? 'bg-blue-600 hover:bg-blue-500 text-white' : 'bg-emerald-600 hover:bg-emerald-500 text-white')
               }">
-                ${isDone ? (isTeacher ? '✓ Semana Dictada (Desmarcar)' : '✓ Semana Sellada (Desmarcar)') : (isTeacher ? 'Marcar Semana Dictada' : 'Marcar Semana Completada')}
+                ${isDone ? (isTeacher ? '✅ Semana Dictada (Desmarcar)' : '✅ ¡Semana Completada! (Desmarcar)') : (isTeacher ? 'Marcar Semana Dictada' : '✓ Marcar Semana Completada')}
               </button>
             </div>
           </div>
