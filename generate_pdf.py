@@ -185,7 +185,7 @@ class PDFReport:
 
 teachers = [
     ("Claudia Garcia Conqui", "Ingles A2 (Pre-intermedio)", "claudia.garcia", "DOC-CLA845", "Mie y Vie 10:30am-12:00pm", "meet.jit.si/bootcampingles"),
-    ("Jonathan Lima (Brasil, Rio Janeiro)", "Portugues do Zero (Iniciantes)", "jonathan.lima", "DOC-JON629", "Mar y Jue 7:00pm-9:00pm", "meet.jit.si/bootcampportugues"),
+    ("Jonathan Lima (Brasil, Rio Janeiro)", "Portugues do Zero (Iniciantes)", "jonathan.lima", "DOC-JON629", "Mar y Jue 7:00pm-8:30pm", "meet.jit.si/bootcampportugues"),
 ]
 
 students = [
