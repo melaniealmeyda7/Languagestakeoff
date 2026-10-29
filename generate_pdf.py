@@ -184,8 +184,12 @@ class PDFReport:
         print(f"Generated {self.filename} ({total_pages} pages)")
 
 teachers = [
-    ("Claudia Garcia Conqui", "Ingles A2 (Pre-intermedio)", "claudia.garcia", "DOC-CLA845", "Mie y Vie 10:30am-12:00pm", "meet.jit.si/bootcampingles"),
-    ("Jonathan Lima (Brasil, Rio Janeiro)", "Portugues do Zero (Iniciantes)", "jonathan.lima", "DOC-JON629", "Mar y Jue 7:00pm-8:30pm", "meet.jit.si/bootcampportugues"),
+    ("Jonathan Lima (Brasil, Rio Janeiro)", "Portugues do Zero (Iniciantes)", "jonathan.lima", "DOC-JON629", "Mar y Jue 7:00pm-8:30pm", "2 Momentos de Meet"),
+]
+
+panelistas = [
+    ("Melanie Almeyda", "Panelista Principal (Acceso Total)", "melanie.almeyda (o melanie)", "PM-MEL754", "Vista Total + Preguntas M1/M2"),
+    ("Nataly", "Copanelista & Moderadora (Acceso Total)", "nataly", "PM-NAT777", "Vista Total + Preguntas M1/M2"),
 ]
 
 students = [
@@ -250,19 +254,38 @@ for out_path in [
     pdf.text(pdf.margin_x, pdf.y, "Enlace de Ingreso al Portal: https://bootcampidiomas.polyglotmap.com/", font="F1", size=9.5, rgb=(0.2, 0.25, 0.3))
     pdf.y -= 22
 
-    # Section 1: Teachers
-    pdf.draw_section_title("1. DOCENTES OFICIALES (VISTA EXCLUSIVA DOCENTE)", 
-                           subtitle="Visualizan unicamente su propio temario de 8 semanas, horario y enlace de clase virtual.",
+    # Section 1: Teachers & Panelists
+    pdf.draw_section_title("1. DOCENTES Y PANELISTAS OFICIALES (PORTUGUÊS DO ZERO)", 
+                           subtitle="Clase en vivo dividida en dos momentos para grabacion automatica: Momento 1 (7:00-7:45pm) y Momento 2 (7:45-8:30pm).",
                            badge_color=(0.04, 0.58, 0.42))
     teacher_cols = [
-        ("Docente", 110, "left"),
-        ("Bootcamp Asignado", 115, "left"),
+        ("Docente / Titular", 130, "left"),
+        ("Programa Asignado", 125, "left"),
         ("Usuario", 75, "left"),
         ("Contrasena", 65, "left"),
         ("Horario Oficial", 90, "left"),
-        ("Sala Virtual", 68, "left")
+        ("Salas Google Meet", 90, "left")
     ]
     pdf.draw_table(teacher_cols, teachers, header_bg=(0.04, 0.48, 0.35))
+
+    pdf.y -= 4
+    pdf.draw_section_title("1.B. PANELISTAS Y COPANELISTAS (ACCESO ESPECIAL COMPLETO)", 
+                           subtitle="Acceso para visualizar todas las vistas, materiales y el Banco de Preguntas dinamizadoras M1 y M2.",
+                           badge_color=(0.45, 0.20, 0.65))
+    panelist_cols = [
+        ("Nombre", 110, "left"),
+        ("Rol Oficial", 135, "left"),
+        ("Usuario de Acceso", 115, "left"),
+        ("Contrasena", 75, "left"),
+        ("Permisos Asignados", 140, "left")
+    ]
+    pdf.draw_table(panelist_cols, panelistas, header_bg=(0.40, 0.18, 0.58))
+
+    # Box with Google Meet Links
+    pdf.rect(pdf.margin_x, pdf.y - 28, pdf.content_w, 26, fill=(0.92, 0.97, 0.99), stroke=(0.01, 0.73, 0.83), line_width=1)
+    pdf.text(pdf.margin_x + 8, pdf.y - 12, "SALAS GOOGLE MEET OFICIALES (Grabacion Automatica en 2 Momentos):", font="F2", size=8.5, rgb=(0.04, 0.38, 0.52))
+    pdf.text(pdf.margin_x + 8, pdf.y - 22, "Momento 1 (7:00-7:45 pm): meet.google.com/dau-jjjd-bjq  |  Momento 2 (7:45-8:30 pm): meet.google.com/pap-ousg-kfy", font="F1", size=8, rgb=(0.1, 0.2, 0.3))
+    pdf.y -= 34
 
     # Section 2: Students
     pdf.draw_section_title("2. ESTUDIANTES INSCRITOS (31 ALUMNOS CON NOMBRE PROPIO)", 
