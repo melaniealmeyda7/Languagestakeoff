@@ -184,7 +184,8 @@ class PDFReport:
         print(f"Generated {self.filename} ({total_pages} pages)")
 
 teachers = [
-    ("Jonathan Lima (Brasil, Rio Janeiro)", "Portugues do Zero (Iniciantes)", "jonathan.lima", "DOC-JON629", "Mar y Jue 7:00pm-8:30pm", "2 Momentos de Meet"),
+    ("Jonathan Lima (Brasil, Rio Janeiro)", "Portugues do Zero (En Vivo)", "jonathan.lima", "DOC-JON629", "Mar y Jue 7:00pm-8:30pm", "meet.google.com/wcy-padp-ufi"),
+    ("Nueva Docente (Por confirmar)", "Conversational English (A2)", "claudia.garcia", "DOC-CLA845", "Lunes 10:00am-11:00am", "Reprogramado (Lunes)"),
 ]
 
 panelistas = [
@@ -281,11 +282,12 @@ for out_path in [
     ]
     pdf.draw_table(panelist_cols, panelistas, header_bg=(0.40, 0.18, 0.58))
 
-    # Box with Google Meet Links
-    pdf.rect(pdf.margin_x, pdf.y - 28, pdf.content_w, 26, fill=(0.92, 0.97, 0.99), stroke=(0.01, 0.73, 0.83), line_width=1)
-    pdf.text(pdf.margin_x + 8, pdf.y - 12, "SALAS GOOGLE MEET OFICIALES (Grabacion Automatica en 2 Momentos):", font="F2", size=8.5, rgb=(0.04, 0.38, 0.52))
-    pdf.text(pdf.margin_x + 8, pdf.y - 22, "Momento 1 (7:00-7:45 pm): meet.google.com/dau-jjjd-bjq  |  Momento 2 (7:45-8:30 pm): meet.google.com/pap-ousg-kfy", font="F1", size=8, rgb=(0.1, 0.2, 0.3))
-    pdf.y -= 34
+    # Box with Google Meet Links and Technical Support
+    pdf.rect(pdf.margin_x, pdf.y - 32, pdf.content_w, 30, fill=(0.92, 0.97, 0.99), stroke=(0.01, 0.73, 0.83), line_width=1)
+    pdf.text(pdf.margin_x + 8, pdf.y - 10, "SALA OFICIAL GOOGLE MEET (PORTUGUES): https://meet.google.com/wcy-padp-ufi", font="F2", size=8.5, rgb=(0.04, 0.38, 0.52))
+    pdf.text(pdf.margin_x + 8, pdf.y - 19, "Ingles Conversacional: Reprogramado para los Lunes 10:00-11:00 am con nueva docente. Nuevo Taller Desde Cero: 25 Nov - 18 Dic.", font="F1", size=7.8, rgb=(0.2, 0.25, 0.3))
+    pdf.text(pdf.margin_x + 8, pdf.y - 28, "SOPORTE TECNICO ANTE CUALQUIER PROBLEMA: WhatsApp: +51 908 934 514  |  Correo: info@polyglotmap.com", font="F2", size=8, rgb=(0.02, 0.55, 0.45))
+    pdf.y -= 38
 
     # Section 2: Students
     pdf.draw_section_title("2. ESTUDIANTES INSCRITOS (31 ALUMNOS CON NOMBRE PROPIO)", 
