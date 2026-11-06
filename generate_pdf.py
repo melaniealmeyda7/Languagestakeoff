@@ -185,7 +185,7 @@ class PDFReport:
 
 teachers = [
     ("Jonathan Lima (Brasil, Rio Janeiro)", "Portugues do Zero (En Vivo)", "jonathan.lima", "DOC-JON629", "Mar y Jue 7:00pm-8:30pm", "meet.google.com/wcy-padp-ufi"),
-    ("Nueva Docente (Por confirmar)", "Conversational English (A2)", "claudia.garcia", "DOC-CLA845", "Lunes 10:00am-11:00am", "Reprogramado (Lunes)"),
+    ("Ana De La Cruz", "Ingles: Club de Conversacion (A2)", "ana.delacruz", "DOC-ANA845", "Lunes 10:00am-11:00am", "Inicia 9 Nov - 14 Dic"),
 ]
 
 panelistas = [
@@ -227,6 +227,7 @@ students = [
     ("31", "Olga Teresa Poicon Ormeno", "olga.poicon", "PM-OLG739"),
     ("32", "Javier Alfaro", "javier.alfaro", "PM-JAV831"),
     ("33", "Elva Yakelin Yto Quispe", "elva.yto", "PM-EYQ528"),
+    ("34", "Andrea Lucero Morales Inga", "andrea.morales", "PM-ALM935"),
 ]
 
 viajeros = [
@@ -257,7 +258,7 @@ for out_path in [
 
     # Section 1: Teachers & Panelists
     pdf.draw_section_title("1. DOCENTES Y PANELISTAS OFICIALES (PORTUGUÊS DO ZERO)", 
-                           subtitle="Clase en vivo dividida en dos momentos para grabacion automatica: Momento 1 (7:00-7:45pm) y Momento 2 (7:45-8:30pm).",
+                           subtitle="Sala oficial unica de clase en vivo: meet.google.com/wcy-padp-ufi (Martes y Jueves 7:00pm - 8:30pm).",
                            badge_color=(0.04, 0.58, 0.42))
     teacher_cols = [
         ("Docente / Titular", 130, "left"),
@@ -284,13 +285,13 @@ for out_path in [
 
     # Box with Google Meet Links and Technical Support
     pdf.rect(pdf.margin_x, pdf.y - 32, pdf.content_w, 30, fill=(0.92, 0.97, 0.99), stroke=(0.01, 0.73, 0.83), line_width=1)
-    pdf.text(pdf.margin_x + 8, pdf.y - 10, "SALA OFICIAL GOOGLE MEET (PORTUGUES): https://meet.google.com/wcy-padp-ufi", font="F2", size=8.5, rgb=(0.04, 0.38, 0.52))
-    pdf.text(pdf.margin_x + 8, pdf.y - 19, "Ingles Conversacional: Reprogramado para los Lunes 10:00-11:00 am con nueva docente. Nuevo Taller Desde Cero: 25 Nov - 18 Dic.", font="F1", size=7.8, rgb=(0.2, 0.25, 0.3))
+    pdf.text(pdf.margin_x + 8, pdf.y - 10, "SALA OFICIAL GOOGLE MEET (PORTUGUES): https://meet.google.com/wcy-padp-ufi  |  Docente: Jonathan Lima", font="F2", size=8.2, rgb=(0.04, 0.38, 0.52))
+    pdf.text(pdf.margin_x + 8, pdf.y - 19, "INGLES: Club Conversacion Lunes 10-11am (9 Nov - 14 Dic) Docente: Ana De La Cruz | Ingles Desde Cero: Mie/Vie 7-8pm (16 Nov - 18 Dic)", font="F1", size=7.2, rgb=(0.2, 0.25, 0.3))
     pdf.text(pdf.margin_x + 8, pdf.y - 28, "SOPORTE TECNICO ANTE CUALQUIER PROBLEMA: WhatsApp: +51 908 934 514  |  Correo: info@polyglotmap.com", font="F2", size=8, rgb=(0.02, 0.55, 0.45))
     pdf.y -= 38
 
     # Section 2: Students
-    pdf.draw_section_title("2. ESTUDIANTES INSCRITOS (31 ALUMNOS CON NOMBRE PROPIO)", 
+    pdf.draw_section_title("2. ESTUDIANTES INSCRITOS (34 ALUMNOS CON NOMBRE PROPIO)", 
                            subtitle="Pueden ingresar con su usuario con punto (ej. magda.luna) o con su nombre y apellido.",
                            badge_color=(0.02, 0.45, 0.75))
     student_cols = [
