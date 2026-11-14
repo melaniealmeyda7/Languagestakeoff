@@ -184,8 +184,9 @@ class PDFReport:
         print(f"Generated {self.filename} ({total_pages} pages)")
 
 teachers = [
-    ("Jonathan Lima (Brasil, Rio Janeiro)", "Portugues do Zero (En Vivo)", "jonathan.lima", "DOC-JON629", "Mar y Jue 7:00pm-8:30pm", "meet.google.com/wcy-padp-ufi"),
-    ("Ana De La Cruz", "Ingles: Club de Conversacion (A2)", "ana.delacruz", "DOC-ANA845", "Lunes 10:00am-11:00am", "Inicia 9 Nov - 14 Dic"),
+    ("Docente Patricia", "Portugues do Zero (En Vivo)", "patricia", "DOC-PAT382", "Mar y Jue 7:00pm-8:30pm", "meet.google.com/wcy-padp-ufi"),
+    ("Docente Jonathan Lima", "Portugues do Zero (En Vivo)", "jonathan.lima", "DOC-JON629", "Mar y Jue 7:00pm-8:30pm", "meet.google.com/wcy-padp-ufi"),
+    ("Docente Ana De La Cruz", "Ingles: Club de Conversacion (A2)", "ana.delacruz", "DOC-ANA845", "Lunes 10:00am-11:00am", "Inicia 9 Nov - 14 Dic"),
 ]
 
 panelistas = [
@@ -285,8 +286,8 @@ for out_path in [
 
     # Box with Google Meet Links and Technical Support
     pdf.rect(pdf.margin_x, pdf.y - 32, pdf.content_w, 30, fill=(0.92, 0.97, 0.99), stroke=(0.01, 0.73, 0.83), line_width=1)
-    pdf.text(pdf.margin_x + 8, pdf.y - 10, "SALA OFICIAL GOOGLE MEET (PORTUGUES): https://meet.google.com/wcy-padp-ufi  |  Docente: Jonathan Lima", font="F2", size=8.2, rgb=(0.04, 0.38, 0.52))
-    pdf.text(pdf.margin_x + 8, pdf.y - 19, "INGLES: Club Conversacion Lunes 10-11am (9 Nov - 14 Dic) Docente: Ana De La Cruz | Ingles Desde Cero: Mie/Vie 7-8pm (16 Nov - 18 Dic)", font="F1", size=7.2, rgb=(0.2, 0.25, 0.3))
+    pdf.text(pdf.margin_x + 8, pdf.y - 10, "SALA OFICIAL GOOGLE MEET (PORTUGUES): https://meet.google.com/wcy-padp-ufi", font="F2", size=8.2, rgb=(0.04, 0.38, 0.52))
+    pdf.text(pdf.margin_x + 8, pdf.y - 19, "DASHBOARD MATERIALES PORTUGUES: https://idiomas.polyglotmap.com/#  |  Ingles Club: Lunes 10-11am (9 Nov - 14 Dic)", font="F1", size=7.2, rgb=(0.2, 0.25, 0.3))
     pdf.text(pdf.margin_x + 8, pdf.y - 28, "SOPORTE TECNICO ANTE CUALQUIER PROBLEMA: WhatsApp: +51 908 934 514  |  Correo: info@polyglotmap.com", font="F2", size=8, rgb=(0.02, 0.55, 0.45))
     pdf.y -= 38
 
