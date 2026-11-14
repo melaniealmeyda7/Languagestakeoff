@@ -54,6 +54,43 @@
             Languages TAKEOFF · Da el primer paso hacia tus metas. Ingresa con tu usuario y contraseña asignados para acceder a tus clases en vivo, materiales y pasaporte digital.
           </p>
 
+          <!-- Tarjetas informativas de los programas -->
+          <div class="space-y-3 mb-4">
+            <!-- Portugués Activo -->
+            <div class="p-3.5 rounded-2xl bg-emerald-950/60 border-2 border-emerald-400/50 flex items-center gap-3 shadow-md">
+              <span class="text-3xl">🇧🇷</span>
+              <div class="text-xs">
+                <div class="font-bold text-white text-sm">Bootcamp de Português do Zero (En Curso)</div>
+                <div class="text-emerald-200">Profesor: Jonathan Lima (Brasil, Rio Janeiro)</div>
+                <div class="text-amber-300 font-semibold">🗓️ Martes y Jueves • 7:00 p.m. - 8:30 p.m. (Hora Peruana)</div>
+                <div class="text-cyan-300 font-mono mt-0.5">📹 Sala Oficial: meet.google.com/wcy-padp-ufi</div>
+              </div>
+            </div>
+
+            <!-- INGLÉS: CLUB DE CONVERSACIÓN & INGLÉS DESDE CERO -->
+            <div class="p-3.5 rounded-2xl bg-indigo-950/70 border-2 border-indigo-400/50 space-y-2.5 shadow-md">
+              <div class="flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="text-2xl">🇺🇸</span>
+                  <div class="font-black text-white text-sm tracking-wide">INGLÉS: CLUB DE CONVERSACIÓN</div>
+                </div>
+                <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-indigo-400/20 text-indigo-200 border border-indigo-400/40">NIVEL A2</span>
+              </div>
+              <div class="text-xs space-y-1 text-slate-200">
+                <div class="text-amber-300 font-semibold">🗓️ Club de conversación: Todos los lunes • 10:00 a 11:00 a. m.</div>
+                <div class="text-slate-300 text-[11px]">Inicia 9 de noviembre — culmina 14 de diciembre</div>
+                <div class="text-cyan-300 text-[11px] font-medium">Docente Oficial: <strong>Ana De La Cruz</strong></div>
+              </div>
+              <div class="pt-2 border-t border-indigo-400/20 text-xs space-y-1">
+                <div class="font-bold text-cyan-300 flex items-center gap-1.5">
+                  <span>🚀</span> <span>Inglés desde cero: Miércoles y viernes</span>
+                  <span class="px-1.5 py-0.2 rounded text-[10px] bg-cyan-400/20 text-cyan-200 border border-cyan-400/40 font-bold">GRUPO 1</span>
+                </div>
+                <div class="text-slate-200 text-[11px]">Horario Grupo 1: <strong>7:00 a 8:00 p. m.</strong></div>
+                <div class="text-emerald-300 text-[11px] font-semibold">El inicio es 16 de noviembre hasta 18 de diciembre</div>
+              </div>
+            </div>
+          </div>
 
           <!-- Banner Soporte Técnico -->
           <div class="p-3 rounded-2xl bg-blue-950/60 border border-cyan-400/30 text-xs text-slate-300 flex items-center gap-3">
@@ -172,12 +209,6 @@
           <button onclick="navigateView('modules')" id="nav-modules" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
             <span>📚</span> <span id="navLabelModules">Mi Material (8 Semanas)</span>
           </button>
-          <a href="https://idiomas.polyglotmap.com/#" target="_blank" rel="noopener noreferrer" id="nav-external-materials" class="nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-gradient-to-r from-emerald-600/30 to-teal-600/30 border border-emerald-400/50 text-emerald-200 hover:bg-emerald-600/50 whitespace-nowrap cursor-pointer transition">
-            <span class="flex items-center gap-2.5">
-              <span>📂</span> <span>Dashboard Materiales</span>
-            </span>
-            <span class="text-[10px] text-cyan-300 font-black">↗</span>
-          </a>
           <button onclick="navigateView('class')" id="nav-class" class="nav-btn w-full flex items-center gap-3 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium text-white/85 hover:bg-white/10 whitespace-nowrap cursor-pointer">
             <span>📹</span> <span id="navLabelClass">Entrar a mis Clases</span>
           </button>
@@ -252,38 +283,6 @@
            VISTA 1: INICIO (HERO CON LAS 2 OPCIONES: INGLÉS Y PORTUGUÉS)
            ===================================================================== -->
       <section id="view-dashboard" class="space-y-6">
-
-        <!-- BANNER DIRECTO: DASHBOARD DE MATERIALES PORTUGUÉS DESDE CERO -->
-        <div id="teacherMaterialsBanner" class="rounded-3xl bg-gradient-to-r from-emerald-950 via-slate-900 to-teal-950 border-2 border-emerald-400/80 p-5 sm:p-6 shadow-2xl flex flex-col md:flex-row items-center justify-between gap-4 text-white">
-          <div class="flex items-center gap-4">
-            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-teal-500 text-slate-950 flex items-center justify-center text-3xl font-black shadow-lg shrink-0">
-              📂
-            </div>
-            <div class="space-y-1">
-              <div class="flex items-center gap-2">
-                <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wider bg-emerald-400 text-slate-950">
-                  REPOSITORIO Y MATERIALES
-                </span>
-                <span class="text-xs text-emerald-300 font-bold">Portugués do Zero</span>
-              </div>
-              <h2 class="text-lg sm:text-xl font-black text-white">
-                Dashboard Oficial de Materiales: Portugués Desde Cero
-              </h2>
-              <p class="text-xs text-slate-300 max-w-2xl">
-                Accede a la biblioteca digital interactiva, diapositivas, audios, ejercicios y recursos de clase en <strong>idiomas.polyglotmap.com</strong>.
-              </p>
-            </div>
-          </div>
-          <a
-            href="https://idiomas.polyglotmap.com/#"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="px-6 py-3.5 rounded-2xl bg-gradient-to-r from-emerald-400 to-teal-400 hover:from-emerald-300 hover:to-teal-300 text-slate-950 font-black text-sm whitespace-nowrap shadow-xl flex items-center gap-2.5 transition transform hover:scale-[1.02] cursor-pointer"
-          >
-            <span>🚀 Abrir Dashboard de Materiales</span>
-            <span class="text-base">↗</span>
-          </a>
-        </div>
         <div class="rounded-3xl bg-gradient-to-br from-slate-950 via-[#0b102b] to-indigo-950 text-white p-6 sm:p-8 border border-indigo-500/30 shadow-xl relative overflow-hidden">
           <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
             <div class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-violet-500/20 border border-violet-400/40 text-violet-200 text-xs font-bold uppercase tracking-wider">
@@ -322,7 +321,19 @@
                   Languages TAKEOFF Bootcamp · Da el primer paso hacia tus metas
                 </p>
 
-
+                <!-- Docente Oficial -->
+                <div class="flex items-center gap-3 p-3 rounded-2xl bg-white/5 border border-white/10 mb-3.5">
+                  <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-emerald-400 to-teal-600 text-slate-950 font-black text-sm flex items-center justify-center shrink-0 shadow-md">
+                    JL
+                  </div>
+                  <div class="text-xs">
+                    <div class="font-black text-white flex items-center gap-1.5">
+                      <span>Jonathan Lima</span>
+                      <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                    </div>
+                    <div class="text-slate-300">Nacionalidad: Brasil, Rio Janeiro. Profesor de Lengua y Literatura</div>
+                  </div>
+                </div>
 
                 <!-- Horario Oficial -->
                 <div class="w-full py-2.5 px-3 rounded-xl bg-amber-400/20 border-2 border-amber-400/50 text-amber-300 font-black text-xs flex items-center justify-center gap-2 shadow-sm mb-3 text-center">
@@ -389,7 +400,7 @@
                   🇺🇸 Club de Conversación en Inglés
                 </h2>
                 <p class="text-xs font-bold uppercase tracking-wider text-cyan-300 mb-3">
-                  English Power Lab · Práctica de Fluidez y Conversación en Vivo
+                  English Power Lab · Docente Oficial: Ana De La Cruz
                 </p>
 
                 <!-- COMUNICADO OFICIAL DEL CLUB DE CONVERSACIÓN -->
@@ -400,10 +411,24 @@
                   <div class="p-2.5 rounded-xl bg-slate-900/80 border border-indigo-400/30 text-white font-semibold space-y-1">
                     <div class="text-amber-300 font-bold text-sm">⏰ 10:00 a 11:00 a. m.</div>
                     <div class="text-slate-200">Inicia 9 de noviembre — culmina 14 de diciembre</div>
-
+                    <div class="text-cyan-300 text-xs">Docente Asignada: <strong>Ana De La Cruz</strong></div>
                   </div>
                 </div>
 
+                <!-- ANUNCIO DE INGLÉS DESDE CERO -->
+                <div class="p-4 rounded-2xl bg-cyan-950/40 border-2 border-cyan-400/40 text-xs space-y-2 mb-3">
+                  <div class="font-black text-cyan-300 flex items-center justify-between">
+                    <span class="flex items-center gap-1.5">
+                      <span>🚀</span> <span>Inglés desde cero: Miércoles y viernes</span>
+                    </span>
+                    <span class="px-2 py-0.5 rounded-full text-[10px] font-black bg-cyan-500/20 text-cyan-300 border border-cyan-400/40">GRUPO 1</span>
+                  </div>
+                  <div class="space-y-1 text-slate-200">
+                    <div>⏰ <strong>Grupo 1:</strong> 7:00 a 8:00 p. m.</div>
+                    <div>🗓️ <strong>El inicio es 16 de noviembre hasta 18 de diciembre</strong></div>
+                    <div class="text-emerald-300 font-semibold pt-1">Inscripciones abiertas. Contáctanos por WhatsApp para asegurar tu vacante gratuita.</div>
+                  </div>
+                </div>
               </div>
 
               <div class="space-y-2 pt-2 border-t border-white/10">
@@ -559,7 +584,7 @@
             <ul class="text-xs sm:text-sm text-slate-300 space-y-2 list-disc list-inside leading-relaxed">
               <li><strong>6:55 pm:</strong> Melanie o Nataly abren la sala oficial (<em>meet.google.com/wcy-padp-ufi</em>), prueban audio y dan la bienvenida a los alumnos en el chat.</li>
               <li><strong>7:00 pm:</strong> Se inicia la grabación de la sesión en Google Meet.</li>
-              <li><strong>7:05 - 7:45 pm:</strong> El docente explica conceptos y fonética; panelistas lanzan preguntas rompehielo al chat (usar los botones de copia rápida abajo).</li>
+              <li><strong>7:05 - 7:45 pm:</strong> El profesor Jonathan Lima explica conceptos y fonética; panelistas lanzan preguntas rompehielo al chat (usar los botones de copia rápida abajo).</li>
             </ul>
           </div>
 
@@ -688,7 +713,7 @@
               <div>
                 <h3 class="text-xl sm:text-2xl font-black text-white">Bootcamp de Português do Zero</h3>
                 <p class="text-xs sm:text-sm text-[var(--muted-foreground)] mt-0.5">
-                  Languages TAKEOFF • 8 Semanas en Vivo (32 Horas)
+                  Docente Oficial: <strong>Jonathan Lima</strong> (Brasil, Rio Janeiro) • 8 Semanas (32 horas)
                 </p>
               </div>
 
@@ -735,15 +760,15 @@
                 <span class="px-3 py-1 rounded-full text-xs font-black bg-indigo-500/20 text-indigo-300 border border-indigo-500/40 uppercase">
                   🇺🇸 INGLÉS: CLUB DE CONVERSACIÓN
                 </span>
-<span class="px-2.5 py-0.5 rounded-full text-xs font-bold text-cyan-300 bg-cyan-950/60 border border-cyan-500/30">
-                  Nivel A2 (Pre-intermedio)
+                <span class="px-2.5 py-0.5 rounded-full text-xs font-bold text-cyan-300 bg-cyan-950/60 border border-cyan-500/30">
+                  Docente: Ana De La Cruz
                 </span>
               </div>
 
               <div>
-                <h3 class="text-xl sm:text-2xl font-black text-white">Club de Conversación en Inglés</h3>
+                <h3 class="text-xl sm:text-2xl font-black text-white">Club de Conversación & Inglés Desde Cero</h3>
                 <p class="text-xs sm:text-sm text-[var(--muted-foreground)] mt-0.5">
-                  English Power Lab • 8 Semanas (32 Horas)
+                  English Power Lab • Docente Oficial: <strong>Ana De La Cruz</strong>
                 </p>
               </div>
 
@@ -759,7 +784,22 @@
                   Inicia 9 de noviembre — culmina 14 de diciembre
                 </p>
               </div>
-            </div><div class="pt-2 border-t border-[var(--border)]">
+
+              <!-- Inglés desde cero -->
+              <div class="p-3.5 rounded-2xl bg-cyan-950/30 border border-cyan-400/30 text-xs space-y-1.5">
+                <div class="font-bold text-cyan-300 flex items-center gap-1">
+                  <span>✨</span> <span>Inglés desde cero: Miércoles y viernes</span>
+                </div>
+                <p class="text-slate-200">
+                  <strong>Grupo 1:</strong> 7:00 a 8:00 p. m.
+                </p>
+                <p class="text-emerald-300 font-semibold">
+                  El inicio es 16 de noviembre hasta 18 de diciembre
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-2 border-t border-[var(--border)]">
               <button
                 onclick="openBootcampCurriculum('EN')"
                 class="w-full py-2.5 px-4 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-cyan-200 text-xs font-bold transition flex items-center justify-center gap-2"
@@ -954,7 +994,7 @@
                 <span class="text-xs font-bold uppercase tracking-wider text-emerald-400">🇧🇷 Bootcamp de Português do Zero</span>
                 <h3 class="text-lg font-black text-white">Evaluación Integral de 4 Competencias — Portugués</h3>
                 <p class="text-xs text-slate-300 leading-relaxed">
-                  En el Bootcamp de Portugués se evaluarán <strong>4 competencias: Comprensión Auditiva, Lectura, Oral y Escrito</strong>, donde la <strong>evaluación Oral tendrá mayor peso</strong>.
+                  En el Bootcamp de Portugués (con el docente <strong>Jonathan Lima</strong>) se evaluarán <strong>4 competencias: Comprensión Auditiva, Lectura, Oral y Escrito</strong>, donde la <strong>evaluación Oral tendrá mayor peso</strong>.
                 </p>
               </div>
               <div class="space-y-2 pt-2">
@@ -1392,8 +1432,8 @@
         title: 'Conversational English Bootcamp',
         subtitle: 'English Power Lab · Tu inglés, en modo power',
         levelBadge: 'Nivel A2 (Pre-intermedio)',
-        coachName: '',
-        coachRole: '',
+        coachName: 'Ana De La Cruz',
+        coachRole: 'Docente Oficial de Inglés',
         duration: '8 Semanas • 32 Horas (2 Sesiones por semana)',
         voiceLang: 'en-US',
         weeks: [
@@ -1413,8 +1453,8 @@
         title: 'Bootcamp de Português do Zero',
         subtitle: 'Languages TAKEOFF Bootcamp · Da el primer paso hacia tus metas',
         levelBadge: 'Desde Cero (Iniciantes)',
-        coachName: '',
-        coachRole: '',
+        coachName: 'Jonathan Lima',
+        coachRole: 'Nacionalidad: Brasil, Rio Janeiro. Profesor de Lengua y Literatura',
         duration: '8 Semanas • Martes y Jueves (7:00 p.m. - 8:30 p.m.)',
         voiceLang: 'pt-BR',
         weeks: [
@@ -1693,7 +1733,7 @@
             category: "Discriminación Auditiva",
             pt: "¿Notaron la diferencia entre 'avô' (abuelo - cerrado como o) y 'avó' (abuela - abierto como o de sol)? Repitamos juntos: 'o meu avô' / 'a minha avó'.",
             phonetics: "[u meu a-vô / a mi-ña a-vó]",
-            guide: "Modelar con el docente la forma de la boca y sonido nasal.",
+            guide: "Modelar con el profesor Jonathan Lima la forma de la boca y sonido nasal.",
             type: "mic"
           }
         ],
@@ -1732,7 +1772,7 @@
             category: "Activación en Chat",
             pt: "Que horas você acordou hoje? Escriban en el chat: 'Eu acordei às 7:00 da manhã' ou a hora em que você despertou.",
             phonetics: "[Eu a-cor-dêi às sê-txi da ma-ñan]",
-            guide: "Copanelista pega en el chat mientras el docente proyecta la lámina de horarios.",
+            guide: "Copanelista pega en el chat mientras Jonathan proyecta la lámina de horarios.",
             type: "chat"
           },
           {
@@ -1779,7 +1819,7 @@
             category: "Gramática Funcional",
             pt: "Atenção: 'Gostar DE'. Em português sempre usamos 'gosto de' ou contrações 'gosto do / da'. ¿Quién dice una frase con lo que le gusta?",
             phonetics: "[Êu gôs-tu dji mú-si-ca / Êu gôs-tu da pra-ya]",
-            guide: "El docente explica la contracción de + o = do, de + a = da.",
+            guide: "Jonathan explica la contracción de + o = do, de + a = da.",
             type: "mic"
           }
         ],
@@ -1873,7 +1913,7 @@
           {
             id: "m2_w5_2",
             category: "Diálogo de Recomendación",
-            pt: "Pregúntale al docente: 'O que o senhor recomenda de sobremesa?' (¿Qué me recomienda de postre?).",
+            pt: "Pregúntale a Jonathan: 'O que o senhor recomenda de sobremesa?' (¿Qué me recomienda de postre?).",
             phonetics: "[U kê u se-ñor re-co-men-da dji so-bre-mê-za?]",
             guide: "Uso respetuoso de 'o senhor / a senhora' en Brasil.",
             type: "mic"
@@ -1886,7 +1926,7 @@
           {
             id: "m1_w6_1",
             category: "Fonética - Dígrafo LH",
-            pt: "O dígrafo 'LH' é suave como /lli/: Trabalho, Filho, Mulher, Escolher. Vamos praticar: 'Eu escolho o melhor produto'.",
+            pt: "O dígrafo 'LH' é suave como /lli/: Trabalho, Filho, Mulher, Escolher. Vamos praticar com Jonathan: 'Eu escolho o melhor produto'.",
             phonetics: "[Êu es-cô-lhu u me-lhor pro-dú-tu]",
             guide: "Evitar el yeísmo fuerte argentino/peruano, buscar suavidad brasileña.",
             type: "mic"
@@ -1927,7 +1967,7 @@
             category: "Fonética - Letra R Carioca",
             pt: "O 'R' carioca aspirado: Rio (/Hi-u/), Rua (/Hu-a/), Carro (/Ca-hu/). Diferença com o 'R' fraco de 'caro' (/ca-ru/).",
             phonetics: "[Hi-u, Hu-a, Ca-hu VS Ca-ru]",
-            guide: "El docente explica la fonética de Río de Janeiro con ejemplos claros.",
+            guide: "Jonathan explica la fonética de Río de Janeiro con ejemplos claros.",
             type: "mic"
           },
           {
@@ -1990,7 +2030,7 @@
           {
             id: "m2_w8_2",
             category: "Cierre Oficial",
-            pt: "Mensagem final de Melanie Almeyda e Nataly para os 33 estudantes graduados.",
+            pt: "Mensagem final de Jonathan Lima, Melanie Almeyda e Nataly para os 33 estudantes graduados.",
             phonetics: "[Vo-cês são po-lí-glo-tas de ver-da-dji! Su-cês-su!]",
             guide: "Brindis virtual y recordatorio final del link de asistencia de la última sesión.",
             type: "mic"
@@ -2169,10 +2209,10 @@
           document.getElementById('studentAnnouncementsGrid').classList.remove('hidden');
           renderPanelistView();
         } else if (isTeacher) {
-          roleBadge.textContent = '👩‍🏫 Docente Oficial • Portugués';
+          roleBadge.textContent = '👨‍🏫 Docente Oficial • Portugués';
           roleBadge.className = 'px-2.5 py-0.5 rounded-full text-xs font-bold bg-amber-400 text-slate-950';
           document.getElementById('heroTravelerBadge').textContent = `DOCENTE OFICIAL: ${u.displayName.toUpperCase()}`;
-          document.getElementById('heroSubtitleText').innerHTML = `Panel exclusivo docente: accede a tu <strong>enlace de clase en Google Meet</strong>, a tu <strong>temario de 8 semanas</strong> y al <strong>dashboard oficial de materiales</strong>.`;
+          document.getElementById('heroSubtitleText').innerHTML = `Panel exclusivo docente: accede directamente a tus <strong>enlaces de grabación en Google Meet</strong> y al <strong>temario de 8 semanas</strong>.`;
           document.getElementById('navLabelDashboard').textContent = 'Mi Clase & Temario';
           document.getElementById('navLabelModules').textContent = 'Mi Temario (8 Semanas)';
           document.getElementById('navLabelClass').textContent = 'Mis Salas de Clase';
@@ -2521,13 +2561,17 @@
                   🇺🇸 INGLÉS: CLUB DE CONVERSACIÓN
                 </span>
                 <span class="text-xs font-bold text-cyan-300">
-                  Nivel A2 (Pre-intermedio)
+                  Docente Oficial: <strong>Ana De La Cruz</strong>
                 </span>
               </div>
               <h3 class="text-xl font-black text-white">${data.title} — ${data.subtitle}</h3>
               <div class="p-3 rounded-xl bg-slate-900/80 border border-indigo-400/30 text-xs text-slate-200 space-y-1">
                 <div class="text-amber-300 font-semibold">🗓️ Club de conversación: Todos los lunes • 10:00 a 11:00 a. m.</div>
                 <div>Inicia 9 de noviembre — culmina 14 de diciembre</div>
+              </div>
+              <div class="p-3 rounded-xl bg-cyan-950/50 border border-cyan-400/30 flex flex-wrap items-center justify-between gap-2 text-xs text-cyan-200">
+                <span>🚀 <strong>Inglés desde cero:</strong> Miércoles y viernes | Grupo 1: 7:00 a 8:00 p. m. (Inicio: 16 de noviembre hasta 18 de diciembre).</span>
+                <a href="https://wa.me/51908934514" target="_blank" rel="noopener noreferrer" class="font-bold underline text-white">Consultar por WhatsApp ↗</a>
               </div>
             </div>
           `;
@@ -2540,7 +2584,7 @@
                 </span>
                 <h3 class="text-xl font-black text-white">${data.title} — ${data.subtitle}</h3>
                 <p class="text-xs sm:text-sm text-[var(--muted-foreground)]">
-                  ${data.subtitle} • ${data.duration}
+                  Docente Oficial: <strong>${data.coachName}</strong> (${data.coachRole}) • ${data.duration}
                 </p>
               </div>
               <a href="${ptUrl}" target="_blank" rel="noopener noreferrer" class="px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-bold shadow-md flex items-center gap-2">
