@@ -287,7 +287,7 @@ for out_path in [
     # Box with Google Meet Links and Technical Support
     pdf.rect(pdf.margin_x, pdf.y - 32, pdf.content_w, 30, fill=(0.92, 0.97, 0.99), stroke=(0.01, 0.73, 0.83), line_width=1)
     pdf.text(pdf.margin_x + 8, pdf.y - 10, "SALA OFICIAL GOOGLE MEET (PORTUGUES): https://meet.google.com/wcy-padp-ufi  |  Docente: Jonathan Lima", font="F2", size=8.2, rgb=(0.04, 0.38, 0.52))
-    pdf.text(pdf.margin_x + 8, pdf.y - 19, "INGLES: Club Conversacion Lunes 10-11am (9 Nov - 14 Dic) Docente: Ana De La Cruz | Ingles Desde Cero: Mie/Vie 7-8pm (16 Nov - 18 Dic)", font="F1", size=7.2, rgb=(0.2, 0.25, 0.3))
+    pdf.text(pdf.margin_x + 8, pdf.y - 19, "INGLES: Club Conversacion Lunes 10-11am (9 Nov - 14 Dic) | Docente Oficial: Ana De La Cruz", font="F1", size=7.5, rgb=(0.2, 0.25, 0.3))
     pdf.text(pdf.margin_x + 8, pdf.y - 28, "SOPORTE TECNICO ANTE CUALQUIER PROBLEMA: WhatsApp: +51 908 934 514  |  Correo: info@polyglotmap.com", font="F2", size=8, rgb=(0.02, 0.55, 0.45))
     pdf.y -= 38
 
