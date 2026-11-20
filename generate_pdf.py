@@ -227,7 +227,7 @@ students = [
     ("30", "Aracely Milagros Roman Loja", "aracely.roman", "PM-ARA943"),
     ("31", "Olga Teresa Poicon Ormeno", "olga.poicon", "PM-OLG739"),
     ("32", "Javier Alfaro", "javier.alfaro", "PM-JAV831"),
-    ("33", "Elva Yakelin Yto Quispe", "elva.yto", "PM-EYQ528"),
+    ("33", "Elva Yakelin Yto Quispe", "elva.yto", "[ACCESO BLOQUEADO]"),
     ("34", "Andrea Lucero Morales Inga", "andrea.morales", "PM-ALM935"),
 ]
 

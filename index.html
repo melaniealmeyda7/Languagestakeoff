@@ -1347,7 +1347,9 @@
         aliases: ['elvayto', 'elvayakelinytoquispe', 'elvayakelin', 'elva'],
         displayName: 'Elva Yakelin Yto Quispe',
         avatar: 'EY',
-        password: 'PM-EYQ528'
+        password: null,
+        blocked: true,
+        blockReason: 'Acceso bloqueado por administración de Polyglot Map'
       },
       {
         id: 'andrea.morales',
@@ -2023,9 +2025,21 @@
           const parsed = JSON.parse(raw);
           if (parsed.currentUser) {
             const fresh = TRAVELER_USERS.find(u => u.id === parsed.currentUser.id);
+            if ((fresh && fresh.blocked) || parsed.currentUser.blocked || parsed.currentUser.id === 'elva.yto') {
+              appState.isLoggedIn = false;
+              appState.currentUser = null;
+              localStorage.removeItem('polyglotmap_session_v6');
+              return;
+            }
             appState.currentUser = fresh || parsed.currentUser;
           }
           if (typeof parsed.isLoggedIn === 'boolean') appState.isLoggedIn = parsed.isLoggedIn;
+          if (appState.currentUser && appState.currentUser.blocked) {
+            appState.isLoggedIn = false;
+            appState.currentUser = null;
+            localStorage.removeItem('polyglotmap_session_v6');
+            return;
+          }
           if (appState.currentUser) loadUserProgress(appState.currentUser.id);
         }
       } catch (e) {}
@@ -2045,7 +2059,27 @@
       const rawInput = normalizeUserKey(document.getElementById('loginUser').value);
       const passInput = document.getElementById('loginPass').value.trim();
 
+      // Verificar si el usuario ingresado corresponde a una cuenta bloqueada
+      const blockedUser = TRAVELER_USERS.find(u => {
+        if (!u.blocked) return false;
+        const keys = [
+          normalizeUserKey(u.id),
+          normalizeUserKey(u.username),
+          normalizeUserKey(u.displayName),
+          ...(u.aliases || []).map(normalizeUserKey)
+        ];
+        return keys.includes(rawInput);
+      });
+
+      if (blockedUser) {
+        const errEl = document.getElementById('loginErrorMsg');
+        errEl.textContent = '⛔ Acceso bloqueado: La cuenta de ' + blockedUser.displayName + ' ha sido suspendida. Comunícate con la administración de Polyglot Map.';
+        errEl.classList.remove('hidden');
+        return;
+      }
+
       const matched = TRAVELER_USERS.find(u => {
+        if (u.blocked) return false;
         const keys = [
           normalizeUserKey(u.id),
           normalizeUserKey(u.username),
@@ -2075,7 +2109,9 @@
           navigateView('dashboard');
         }
       } else {
-        document.getElementById('loginErrorMsg').classList.remove('hidden');
+        const errEl = document.getElementById('loginErrorMsg');
+        errEl.textContent = '❌ Usuario o código de acceso incorrecto. Verifica tus credenciales asignadas.';
+        errEl.classList.remove('hidden');
       }
     }
 
@@ -2414,7 +2450,7 @@
       if (!listEl) return;
 
       // Filtrar a los estudiantes reales (excluyendo docentes y viajeros genéricos)
-      const enrolledStudents = TRAVELER_USERS.filter(u => u.role !== 'teacher' && !u.id.startsWith('viajero'));
+      const enrolledStudents = TRAVELER_USERS.filter(u => u.role !== 'teacher' && !u.id.startsWith('viajero') && !u.blocked);
       const participated = appState.studentsParticipated || [];
 
       if (countEl) {
